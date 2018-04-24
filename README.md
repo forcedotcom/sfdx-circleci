@@ -1,6 +1,6 @@
 # sfdx-circleci [![Build Status](https://travis-ci.org/forcedotcom/sfdx-travisci.svg?branch=master)](https://travis-ci.org/forcedotcom/sfdx-travisci)
 
-For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
+Coming Soon --- For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
 This repository shows one way you can successfully setup Salesforce DX with Circle CI. We make a few assumptions in this README:
 
@@ -21,23 +21,36 @@ If any any of these assumptions aren't true, the following steps won't work.
 
 4) Clone your forked repo locally: `git clone https://github.com/<git_username>/sfdx-circleci.git`
 
+4) Encrypt and store the server.key generated above.
+> "Circle does a nice job of allowing you to set environment variables inside the UI in a 
+  protected way. Because OpenSSL likes key files formatted in a particular fashion, we'll convert 
+  it to hex for storage in env variables. This will make it easier to create a valid key file 
+  on the fly in the build later." (attribution to [Kevin O'Hara](https://github.com/kevinohara80))
+
+ * Generate keys to encrypt you server.key file locally and then decrypt your server key within CircleCI
+
+```bash
+$ openssl enc -aes-256-cbc -k <passphrase here> -P -md sha1 -nosalt
+  key=E5E9FA1BA31ECD1AE84F75CAAA474F3A663F05F412028F81DA65D26EE56424B2
+  iv =E93DA465B309C53FEC5FF93C9637DA58
+```
+
+> Make note of the `key` and `iv` values output to the screen. You will use the values following `key=` and `iv =` to encrypt your `server.key` in the next step.
+
+ * Encrypt the `server.key` using the newly generated `key` and `iv` values.  These values can only be generated once, so if you lose these values you will need to generated new ones and encrypt again.
+
+```bash
+openssl enc -nosalt -aes-256-cbc -in server.key -out server.key.enc -base64 -K <key from above> -iv <iv from above>
+```
+ 
+ * Store the `key`, `iv` and contents of `server.key.enc` as protected environment variables in the Circleci UI.
+
 5) From you JWT-Based connected app on Salesforce, retrieve the generated `Consumer Key`.
 
-TODO: Adjust to Circle CI instructions
-6) Set your `Consumer Key` and `Username` using the Travis CLI. Note that this username is the username that you use to access your Dev Hub.
 
-    travis env set CONSUMERKEY <your_consumer_key>
-    travis env set USERNAME <your_username>
+6) Set your `HUB_CONSUMER_KEY`, `HUB_SERVER_KEY_HEX` and `HUB_SFDX_USER` using the CircleCi UI. Note that this username is the username that you use to access your Dev Hub.
 
-7) Add your `server.key` that you generated previously to the folder called `assets`.
-
-8) Open the `.circleci/.config.yml` file and remove the first 
-TODO: Adjust to Circle CI instructions
-line that starts with `openssl ...` and save the file.
-
-9) From the root folder of your local project, encrypt your `server.key` value:
-
-    travis encrypt-file assets/server.key assets/server.key.enc --add
+![alt text](assets/images/screenshot-194.png)
 
 10) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
 
