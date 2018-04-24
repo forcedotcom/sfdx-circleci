@@ -1,6 +1,7 @@
-# sfdx-circleci [![Build Status](https://travis-ci.org/forcedotcom/sfdx-travisci.svg?branch=master)](https://travis-ci.org/forcedotcom/sfdx-travisci)
+# sfdx-circleci 
+[![CircleCI](https://circleci.com/gh/forcedotcom/sfdx-circleci.svg?style=svg)](https://circleci.com/gh/forcedotcom/sfdx-circleci)
 
-For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
+Coming Soon --- For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
 This repository shows one way you can successfully setup Salesforce DX with Circle CI. We make a few assumptions in this README:
 
@@ -21,27 +22,38 @@ If any any of these assumptions aren't true, the following steps won't work.
 
 4) Clone your forked repo locally: `git clone https://github.com/<git_username>/sfdx-circleci.git`
 
-5) From you JWT-Based connected app on Salesforce, retrieve the generated `Consumer Key`.
+4) Encrypt and store the server.key generated above using the instructions below.
+> "Circle does a nice job of allowing you to set environment variables inside the UI in a protected way." (attribution to [Kevin O'Hara](https://github.com/kevinohara80))
 
-TODO: Adjust to Circle CI instructions
-6) Set your `Consumer Key` and `Username` using the Travis CLI. Note that this username is the username that you use to access your Dev Hub.
+- First, we will generate a key and initializtion vector (iv) to encrypt your server.key file locally.  The key and iv will be used by Circleci to decrypt your server key in the build environment.
 
-    travis env set CONSUMERKEY <your_consumer_key>
-    travis env set USERNAME <your_username>
+```bash
+$ openssl enc -aes-256-cbc -k <passphrase here> -P -md sha1 -nosalt
+  key=E5E9FA1BA31ECD1AE84F75CAAA474F3A663F05F412028F81DA65D26EE56424B2
+  iv =E93DA465B309C53FEC5FF93C9637DA58
+```
 
-7) Add your `server.key` that you generated previously to the folder called `assets`.
+> Make note of the `key` and `iv` values output to the screen. You will use the values following `key=` and `iv =` to encrypt your `server.key` in the next step.
 
-8) Open the `.circleci/.config.yml` file and remove the first 
-TODO: Adjust to Circle CI instructions
-line that starts with `openssl ...` and save the file.
+- Encrypt the `server.key` using the newly generated `key` and `iv` values.  The `key` and `iv` values *should* only be used once, don't use them to encrypt more than the `server.key`.  While you can re-use this pair to encrypt other things, it is considered a security violation to do so.  Every time you run the command above, a new `key` and `iv` value will be generated.  IE, you can not regenerated the same pair, so if you lose these values you will need to generated new ones and encrypt again.
 
-9) From the root folder of your local project, encrypt your `server.key` value:
+```bash
+openssl enc -nosalt -aes-256-cbc -in assets/server.key -out assets/server.key.enc -base64 -K <key from above> -iv <iv from above>
+```
+ 
+- Store the `key`, `iv` and contents of `server.key.enc` as protected environment variables in the Circleci UI. These valus are considered *secret* so please treat them as such.
 
-    travis encrypt-file assets/server.key assets/server.key.enc --add
+5) From you JWT-Based connected app on Salesforce, retrieve the generated `Consumer Key` and store in a Circleci environment variable named `HUB_CONSUMER_KEY` using the Circleci UI.
 
-10) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
+6) Store the user name that you use to access your Dev Hub in a Circleci environment variable named `HUB_SFDX_USER` using the Circleci UI. Note that this username is the username that you use to access your Dev Hub.
 
-And you should be ready to go! Now when you commit and push a change, your change will kick off a Travis CI build.
+7) Store the `key` and `iv` values used above in Circleci environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV` respectively.  When finished setting environment variables you environment variables setup screen should look like the one below.
+
+![alt text](assets/images/screenshot-194.png)
+
+8   ) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
+
+And you should be ready to go! Now when you commit and push a change, your change will kick off a Circle CI build.
 
 Enjoy!
 
