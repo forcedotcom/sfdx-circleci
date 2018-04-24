@@ -50,7 +50,7 @@ openssl enc -nosalt -aes-256-cbc -in assets/server.key -out assets/server.key.en
 
 ![alt text](assets/images/screenshot-194.png)
 
-10) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
+8) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
 
 And you should be ready to go! Now when you commit and push a change, your change will kick off a Circle CI build.
 
