@@ -21,13 +21,10 @@ If any any of these assumptions aren't true, the following steps won't work.
 
 4) Clone your forked repo locally: `git clone https://github.com/<git_username>/sfdx-circleci.git`
 
-4) Encrypt and store the server.key generated above.
-> "Circle does a nice job of allowing you to set environment variables inside the UI in a 
-  protected way. Because OpenSSL likes key files formatted in a particular fashion, we'll convert 
-  it to hex for storage in env variables. This will make it easier to create a valid key file 
-  on the fly in the build later." (attribution to [Kevin O'Hara](https://github.com/kevinohara80))
+4) Encrypt and store the server.key generated above using the instructions below.
+> "Circle does a nice job of allowing you to set environment variables inside the UI in a protected way." (attribution to [Kevin O'Hara](https://github.com/kevinohara80))
 
- * Generate keys to encrypt you server.key file locally and then decrypt your server key within CircleCI
+- First, we will generate a key and initializtion vector (iv) to encrypt your server.key file locally.  The key and iv will be used by Circleci to decrypt your server key in the build environment.
 
 ```bash
 $ openssl enc -aes-256-cbc -k <passphrase here> -P -md sha1 -nosalt
@@ -37,24 +34,25 @@ $ openssl enc -aes-256-cbc -k <passphrase here> -P -md sha1 -nosalt
 
 > Make note of the `key` and `iv` values output to the screen. You will use the values following `key=` and `iv =` to encrypt your `server.key` in the next step.
 
- * Encrypt the `server.key` using the newly generated `key` and `iv` values.  These values can only be generated once, so if you lose these values you will need to generated new ones and encrypt again.
+- Encrypt the `server.key` using the newly generated `key` and `iv` values.  The `key` and `iv` values *should* only be used once, don't use them to encrypt more than the `server.key`.  While you can re-use this pair to encrypt other things, it is considered a security violation to do so.  Every time you run the command above, a new `key` and `iv` value will be generated.  IE, you can not regenerated the same pair, so if you lose these values you will need to generated new ones and encrypt again.
 
 ```bash
-openssl enc -nosalt -aes-256-cbc -in server.key -out server.key.enc -base64 -K <key from above> -iv <iv from above>
+openssl enc -nosalt -aes-256-cbc -in assets/server.key -out assets/server.key.enc -base64 -K <key from above> -iv <iv from above>
 ```
  
- * Store the `key`, `iv` and contents of `server.key.enc` as protected environment variables in the Circleci UI.
+- Store the `key`, `iv` and contents of `server.key.enc` as protected environment variables in the Circleci UI. These valus are considered *secret* so please treat them as such.
 
-5) From you JWT-Based connected app on Salesforce, retrieve the generated `Consumer Key`.
+5) From you JWT-Based connected app on Salesforce, retrieve the generated `Consumer Key` and store in a Circleci environment variable named `HUB_CONSUMER_KEY` using the Circleci UI.
 
+6) Store the user name that you use to access your Dev Hub in a Circleci environment variable named `HUB_SFDX_USER` using the Circleci UI. Note that this username is the username that you use to access your Dev Hub.
 
-6) Set your `HUB_CONSUMER_KEY`, `HUB_SERVER_KEY_HEX` and `HUB_SFDX_USER` using the CircleCi UI. Note that this username is the username that you use to access your Dev Hub.
+7) Store the `key` and `iv` values used above in Circleci environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV` respectively.  When finished setting environment variables you environment variables setup screen should look like the one below.
 
 ![alt text](assets/images/screenshot-194.png)
 
 10) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
 
-And you should be ready to go! Now when you commit and push a change, your change will kick off a Travis CI build.
+And you should be ready to go! Now when you commit and push a change, your change will kick off a Circle CI build.
 
 Enjoy!
 
