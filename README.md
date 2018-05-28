@@ -1,6 +1,7 @@
 # sfdx-circleci 
 [![CircleCI](https://circleci.com/gh/forcedotcom/sfdx-circleci.svg?style=svg)](https://circleci.com/gh/forcedotcom/sfdx-circleci)
 
+Updated by Darrell DeVeaux May 28 2018
 Coming Soon --- For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
 This repository shows one way you can successfully setup Salesforce DX with Circle CI. We make a few assumptions in this README:
