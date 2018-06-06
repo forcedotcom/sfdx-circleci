@@ -1,7 +1,7 @@
 {
-    "orgName": "wade.wegner Example",
+    "orgName": "Health Details Example",
     "edition": "Developer",
-    "orgPreferences" : {
+    "orgPreferences": {
         "enabled": ["S1DesktopEnabled"]
     }
 }
