@@ -20,7 +20,7 @@ jobs:
           command: "sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername -a circle_build_$CIRCLE_BUILD_NUM\n"
           name: "Create Scratch Org"
       - run: 
-          command: "sfdx force:source:push;"
+          command: "sfdx force:source:push"
           name: "Push source code"
       - run:
           command: |
