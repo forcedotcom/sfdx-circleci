@@ -19,7 +19,7 @@ jobs:
               sudo wget -qO- https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar xJf -
               ./sfdx-cli-*/install
       - run: 
-          command: "echo $DEV_HUB_AUTH_URL > /tmp/sfdx.url"
+          command: "sudo echo $DEV_HUB_AUTH_URL > /tmp/sfdx.url"
           name: "Create temp sfdxurl file"
       - run: 
           command: "sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -a circle_build_$CIRCLE_BUILD_NUM --setdefaultdevhubusername"
