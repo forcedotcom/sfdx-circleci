@@ -22,9 +22,6 @@ jobs:
       - run: 
           command: "sfdx force:source:push;"
           name: "Push source code"
-      - run: 
-          command: "sfdx force:user:permset:assign -n Random_Dog"
-          name: "Assign permission set"
       - run:
           command: |
             sfdx force:apex:test:run --wait 6 --resultformat tap --codecoverage -d test_results
