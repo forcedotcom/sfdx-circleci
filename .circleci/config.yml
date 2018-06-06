@@ -16,14 +16,8 @@ jobs:
       - run:
           name: Download CLI
           command: |
-            mkdir sfdx
-            wget -qO- $DX_CLI_URL | tar xJ -C sfdx --strip-components 1
-      - run:
-          name: Install CLI
-          command: |
-            ./sfdx/install
-            sfdx
-            mkdir tmp
+              wget -qO- https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar xJf -
+              ./sfdx-cli-*/install
       - run: 
           command: "echo $DEV_HUB_AUTH_URL > /tmp/sfdx.url"
           name: "Create temp sfdxurl file"
