@@ -11,7 +11,7 @@ jobs:
               ./sfdx-cli-*/install
           name: "Install SFDX"
       - run: 
-          command: "echo $DEV_HUB_AUTH_URL"
+          command: "echo foo"
           name: "Create temp sfdxurl file"
       - run: 
           command: "echo $DEV_HUB_AUTH_URL > /tmp/sfdx.url"
