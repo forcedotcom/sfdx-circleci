@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Computes bonuses for Audit Reports</description>
+    <fields>
+        <fullName>Bonus_Level__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Bonus Level</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Bonus Level</inlineHelpText>
+        <label>Bonus Level</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record is active</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Indicates if record is active</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Reason or description for bonus</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Reason or description for bonus</inlineHelpText>
+        <label>Reason</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>AuditReportBonus</label>
+    <pluralLabel>AuditReportBonuses</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

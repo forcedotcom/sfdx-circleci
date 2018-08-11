@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount/RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Averages record count to avoid duplication</description>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Count</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_11503836</developerName>
+        <masterLabel>Business Days Outstanding</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Identifier__c.Confirmation_Data__r$Business_Days_Calc__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-180</to>
+            </sourceValues>
+            <value>&gt;180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-180</from>
+                <to>-90</to>
+            </sourceValues>
+            <value>90-180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-90</from>
+                <to>-60</to>
+            </sourceValues>
+            <value>60-90 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-60</from>
+                <to>-30</to>
+            </sourceValues>
+            <value>30-60 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-30</from>
+                <to>-10</to>
+            </sourceValues>
+            <value>10-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-10</from>
+            </sourceValues>
+            <value>10 Days or Less</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_400922</developerName>
+        <masterLabel>Calendar Days Outstanding</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Identifier__c.Confirmation_Data__r$Calendar_Days_Calc__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-180</to>
+            </sourceValues>
+            <value>&gt;180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-180</from>
+                <to>-90</to>
+            </sourceValues>
+            <value>90-180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-90</from>
+                <to>-60</to>
+            </sourceValues>
+            <value>60-90 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-60</from>
+                <to>-30</to>
+            </sourceValues>
+            <value>30-60 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-30</from>
+                <to>-10</to>
+            </sourceValues>
+            <value>10-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-10</from>
+            </sourceValues>
+            <value>10 Days or Less</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>HorizontalBarGrouped</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Identifier__c$Phone__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Identifier__c$Confirmation_Status__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Bad Phones With Confirmation Count</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Identifier__c.Confirmation_Data__r$Confirmation__c.Address_Type__c.Address__c.Full_Adddress__c</field>
+    </columns>
+    <columns>
+        <field>Identifier__c.Confirmation_Data__r$Confirmation_Status__c</field>
+    </columns>
+    <columns>
+        <field>Identifier__c.Confirmation_Data__r$ConfirmationData_DateTime__c</field>
+    </columns>
+    <columns>
+        <field>Identifier__c.Confirmation_Data__r$Name</field>
+    </columns>
+    <columns>
+        <field>BucketField_11503836</field>
+    </columns>
+    <description>Bad or invalid phone numbers for providers and address. Listed with date of first and most recent confirmation</description>
+    <filter>
+        <criteriaItems>
+            <column>Identifier__c$Confirmation_Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Fax,Out of Order</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Identifier__c$Confirmation_Source__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Not Updated</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_400922</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Identifier__c$Confirmation_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Identifier__c$Phone__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Identifier__c.Confirmation_Data__r$Confirmation__c.Address_Type__c.Provider__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Bad Phones on Directory</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Identifier_PO__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Identifier__c$Confirmation_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

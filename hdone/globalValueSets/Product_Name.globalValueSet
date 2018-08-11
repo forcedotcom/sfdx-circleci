@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>MemberOne</fullName>
+        <default>false</default>
+        <label>MemberOne</label>
+    </customValue>
+    <customValue>
+        <fullName>ProviderOne</fullName>
+        <default>false</default>
+        <label>ProviderOne</label>
+    </customValue>
+    <customValue>
+        <fullName>Standard</fullName>
+        <default>false</default>
+        <label>Standard</label>
+    </customValue>
+    <customValue>
+        <fullName>Generic</fullName>
+        <default>false</default>
+        <label>Generic</label>
+    </customValue>
+    <customValue>
+        <fullName>MemberOneCustomerService</fullName>
+        <default>false</default>
+        <label>MemberOneCustomerService</label>
+    </customValue>
+    <customValue>
+        <fullName>ExpressOne</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ExpressOne</label>
+    </customValue>
+    <description>Product Name picklist</description>
+    <masterLabel>Product Name</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

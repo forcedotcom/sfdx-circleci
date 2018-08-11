@@ -1,0 +1,2513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Audit reports (surveys) performed in system</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AddressTypeIdFormula__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Displays customer record ID or External Id if record is shared from Master org. Does logic to determine if need to use Source or Target Ids for formula. Needed to correctly update record after SF2SF sharing.</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Address_Type__c)),
+CASE(  SourceOrg__c  , &quot;Customer&quot;,
+(CASE(  Address_Type__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Address_Type__c),
+&quot;HealthDetail&quot;, Address_Type__r.ExternalId__c, &quot;Error&quot;)) ,
+&quot;HealthDetail&quot;,
+(CASE( Address_Type__r.SourceOrg__c , &quot;HealthDetail&quot;,Address_Type__r.ExternalId__c,
+&quot;Customer&quot;, Address_Type__r.Remote_AddressType_Id__c , &quot;Error&quot;)) ,&quot;Error&quot;),
+NULL)
+
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AddressTypeIdFormula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to Address Type for name of person and address for AuditReport. If no specific AddressType (i.e. phone audit) then other lookups are used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name and location for audit report. Select link to see detailed information.</inlineHelpText>
+        <label>Address Type</label>
+        <referenceTo>Address_Type__c</referenceTo>
+        <relationshipLabel>AuditReports</relationshipLabel>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to indicate approval status.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to indicate approval status</inlineHelpText>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Approval</fullName>
+                    <default>false</default>
+                    <label>Awaiting Approval</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Recalled</fullName>
+                    <default>false</default>
+                    <label>Recalled</label>
+                </value>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                    <label>Under Review</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Assignment_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>AMT Assignment ID for tracking purposes</inlineHelpText>
+        <label>Assignment ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AuditSetting__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>AuditSetting</label>
+        <referenceTo>AuditSetting__c</referenceTo>
+        <relationshipLabel>AuditReports (AuditSetting)</relationshipLabel>
+        <relationshipName>AuditReports1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Block_Worker__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If you too unhappy with the performance, please tick this , the worker  will be permanently blocked from working on your future assignments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If you too unhappy with the performance, please tick this , the worker  will be permanently blocked from working on your future assignments</inlineHelpText>
+        <label>Block Worker</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bonus_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Provide some comments, to the worker related to Bonus</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide some comments, to the worker related to Bonus</inlineHelpText>
+        <label>Bonus Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Bonus_Error__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Error if occurred during processing of bonus</inlineHelpText>
+        <label>Bonus Error</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Bonus_Payment_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Initially the status is set as Pending (via workflow)</inlineHelpText>
+        <label>Bonus Payment Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Paid</fullName>
+                    <default>false</default>
+                    <label>Paid</label>
+                </value>
+                <value>
+                    <fullName>Error</fullName>
+                    <default>false</default>
+                    <label>Error</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Bonus_Unique_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Unique ID for processing Bonus payments</inlineHelpText>
+        <label>Bonus Unique ID</label>
+        <length>75</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bonus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Enter the Bonus amount to the worker for the current job</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Bonus amount to the worker for the current job</inlineHelpText>
+        <label>Bonus</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Call_Length__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Length of call in seconds. Used secoinds to be consistent with how native field is on Task</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Length of call in seconds</inlineHelpText>
+        <label>Call Length</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Comments on audit report</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments on audit report</inlineHelpText>
+        <label>Comments</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Completion_DateTime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Completion date and time. Cannot insert just a time field, using this.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Completion date and time if time is applicable</inlineHelpText>
+        <label>Completion DateTime</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Confirmation__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Used to track back to Confirmations when applicable</description>
+        <externalId>false</externalId>
+        <label>Confirmation</label>
+        <referenceTo>Confirmation__c</referenceTo>
+        <relationshipLabel>AuditReports</relationshipLabel>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContactIdFormula__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Displays customer record ID or External Id if record is shared from Master org. Does logic to determine if need to use Source or Target Ids for formula. Needed to correctly update record after SF2SF sharing.</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Provider__c)),
+CASE(  SourceOrg__c  , &quot;Customer&quot;,
+(CASE(  Provider__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Provider__c),
+&quot;HealthDetail&quot;, Provider__r.ExternalId__c, &quot;Error&quot;)) ,
+&quot;HealthDetail&quot;,
+(CASE( Provider__r.SourceOrg__c , &quot;HealthDetail&quot;,Provider__r.ExternalId__c,
+&quot;Customer&quot;, Provider__r.Remote_Provider_Id__c , &quot;Error&quot;)) ,&quot;Error&quot;),
+NULL)
+
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ContactIdFormula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_File__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Link to external file such as audio, report, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Link to external file</inlineHelpText>
+        <label>External File</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>External_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>External Id for object. Used to map Ids from external systems</description>
+        <externalId>true</externalId>
+        <inlineHelpText>External Id for object. Used to map Ids from external systems</inlineHelpText>
+        <label>External ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Flow_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Flow Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Flow_Status</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Identifier_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Identifier Type</label>
+        <referenceTo>Identifier_Type__c</referenceTo>
+        <relationshipLabel>AuditReports</relationshipLabel>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Generic field to hold other information about AuditReport not captured elsewhere</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Generic field to hold other information about AuditReport</inlineHelpText>
+        <label>Other</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Process_Builder_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Unfortunate field used to indicate if Process Builder ran to avoid recursive updates.</description>
+        <externalId>false</externalId>
+        <label>Process Builder Update</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product Name</inlineHelpText>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Product_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Provider__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to contact field. Used when AuditReport not related to an Address Type but is for an individual provider only.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to provider. Only used if Address Type or Facility not populated.</inlineHelpText>
+        <label>Provider</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>AuditReports</relationshipLabel>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QA_Review__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Fields to review for QA if any</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fields to review for QA</inlineHelpText>
+        <label>QA Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                    <label>9</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>11</fullName>
+                    <default>false</default>
+                    <label>11</label>
+                </value>
+                <value>
+                    <fullName>12</fullName>
+                    <default>false</default>
+                    <label>12</label>
+                </value>
+                <value>
+                    <fullName>13</fullName>
+                    <default>false</default>
+                    <label>13</label>
+                </value>
+                <value>
+                    <fullName>14</fullName>
+                    <default>false</default>
+                    <label>14</label>
+                </value>
+                <value>
+                    <fullName>15</fullName>
+                    <default>false</default>
+                    <label>15</label>
+                </value>
+                <value>
+                    <fullName>16</fullName>
+                    <default>false</default>
+                    <label>16</label>
+                </value>
+                <value>
+                    <fullName>17</fullName>
+                    <default>false</default>
+                    <label>17</label>
+                </value>
+                <value>
+                    <fullName>18</fullName>
+                    <default>false</default>
+                    <label>18</label>
+                </value>
+                <value>
+                    <fullName>19</fullName>
+                    <default>false</default>
+                    <label>19</label>
+                </value>
+                <value>
+                    <fullName>20</fullName>
+                    <default>false</default>
+                    <label>20</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Text__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used for Salesforce to Salesforce to update Record Type</description>
+        <externalId>false</externalId>
+        <formula>RecordType.DeveloperName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Used for Salesforce to Salesforce to update Record Type</inlineHelpText>
+        <label>Record Type Text</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_AddressTypeId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Remote AddressTypeId for Salesforce to Salesforce</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Remote AddressTypeId for Salesforce to Salesforce</inlineHelpText>
+        <label>Remote AddressTypeId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to indicate how AuditReport should be handled for external customers. Do not want to delete reports as needed to Approve Mturk and accounting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer Reporting Status for AuditReport</inlineHelpText>
+        <label>Reporting Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Send to Customer</fullName>
+                    <default>true</default>
+                    <label>Send to Customer</label>
+                </value>
+                <value>
+                    <fullName>Include in Customer Reports</fullName>
+                    <default>false</default>
+                    <label>Include in Customer Reports</label>
+                </value>
+                <value>
+                    <fullName>Exclude from Customer</fullName>
+                    <default>false</default>
+                    <label>Exclude from Customer</label>
+                </value>
+                <value>
+                    <fullName>Exclude from Customer Reports</fullName>
+                    <default>false</default>
+                    <label>Exclude from Customer Reports</label>
+                </value>
+                <value>
+                    <fullName>Address Not Found</fullName>
+                    <default>false</default>
+                    <label>Address Not Found</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Response_10_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 10 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_10__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 10</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_11_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 11 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_11__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 11</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_12_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 12 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_12__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 12</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_13_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 13 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_13__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 13</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_14_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 14 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_14__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 14</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_15_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 15 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_15__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 15</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_16_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 16 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_16__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 16</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_17_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 17 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_17__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 17</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_18_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 18 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_18__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 18</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_19_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 19 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_19__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 19</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_1_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 1 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_2_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 2 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_3_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 3 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_3__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_4_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 4 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_4__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_5_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 5 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_5__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 5</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_6_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 6 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_6__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 6</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_7_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 7 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_7__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 7</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_8_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 8 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_8__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 8</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_9_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response comments</inlineHelpText>
+        <label>Response 9 Comments</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Response_9__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Audit response</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Audit response</inlineHelpText>
+        <label>Response 9</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_PartnerConnection_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sf2Sf PartnerConnectionId Id from PartnerNetworkConnection</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Sf2Sf PartnerConnectionId Id from PartnerNetworkConnection</inlineHelpText>
+        <label>Sf2Sf_PartnerConnection_Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Id from PartnerNetworkRecordConnection for shared record.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Id from PartnerNetworkRecordConnection for shared record.</inlineHelpText>
+        <label>Sf2Sf ShareId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sharing name for Salesforce to Salesforce. Uses Custom setting to get name as PartnerNetworkConnection name cannot be changed and can be confusing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sharing name for Salesforce to Salesforce from Custom Setting</inlineHelpText>
+        <label>Sf2Sf_ShareName</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Populates shared status for Salesforce to Salesforce connection. Cannot read status from object only from PartnerNetworkConnection object</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Shared status for Salesforce to Salesforce connection. Not real time.</inlineHelpText>
+        <label>Sf2Sf_ShareStatus</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SourceOrg__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies which is source org for record. If record is shared FROM customer to HealthDetail then Customer else if shared other way HealthDetail. Was using formula fields but getting relationship errors.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies which is source org for record Customer or HealthDetail</inlineHelpText>
+        <label>SourceOrg</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>HealthDetail</fullName>
+                    <default>false</default>
+                    <label>HealthDetail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Generic field used for other information necessary for audit report.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of audit report if applicable</inlineHelpText>
+        <label>Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>User that completed Audit Report.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User that completed Audit Report</inlineHelpText>
+        <label>CompletedBy</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Worker__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Mturk Worker for AuditReport. Redundant from WorkerAuditReport object but used for Approval process to Auto Approve some records</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Mturk Worker for AuditReport</inlineHelpText>
+        <label>Worker</label>
+        <referenceTo>Worker__c</referenceTo>
+        <relationshipLabel>AuditReports</relationshipLabel>
+        <relationshipName>AuditReports</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>AuditReport</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Provider__c</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Current_Month</fullName>
+        <columns>NAME</columns>
+        <columns>Provider__c</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Current Month</label>
+    </listViews>
+    <listViews>
+        <fullName>Current_Quarter</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Current Quarter</label>
+    </listViews>
+    <listViews>
+        <fullName>Last_Week</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Last Week</label>
+    </listViews>
+    <listViews>
+        <fullName>Previous_Month</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Previous Month</label>
+    </listViews>
+    <listViews>
+        <fullName>Previous_Quarter</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Previous Quarter</label>
+    </listViews>
+    <listViews>
+        <fullName>This_Week</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>Today</fullName>
+        <columns>NAME</columns>
+        <columns>Completion_DateTime__c</columns>
+        <columns>Provider__c</columns>
+        <columns>Address_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Today</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ARN-{00000000}</displayFormat>
+        <label>AuditReport Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>AuditReports</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>In_Person</fullName>
+        <active>true</active>
+        <description>Audit Reports done in person</description>
+        <label>In Person</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Bonus_Payment_Status__c</picklist>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QA_Review__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Address Not Found</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclude from Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Customer</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mturk_General</fullName>
+        <active>true</active>
+        <description>General Mturk tasks. Not phone related</description>
+        <label>Mturk General</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Bonus_Payment_Status__c</picklist>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QA_Review__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Exclude from Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclude from Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Include in Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Customer</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mturk_Phone</fullName>
+        <active>true</active>
+        <description>MTurk Phone Audit Reports</description>
+        <label>Mturk Phone</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Bonus_Payment_Status__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QA_Review__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Exclude from Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclude from Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Include in Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Customer</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Phone</fullName>
+        <active>true</active>
+        <description>Audit Reports done over phone</description>
+        <label>Phone</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Bonus_Payment_Status__c</picklist>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QA_Review__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Exclude from Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Customer</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Quality_Review</fullName>
+        <active>true</active>
+        <description>Quality Review Reports</description>
+        <label>Quality Review</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Bonus_Payment_Status__c</picklist>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>QA_Review__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Exclude from Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exclude from Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Include in Customer Reports</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to Customer</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Comments_Required</fullName>
+        <active>true</active>
+        <description>Comments are required if Report is Rejected or worker is blocked for Amazon Mechanical Turk records. API requires comments in this field. Class is using this requirement</description>
+        <errorConditionFormula>AND(
+ISBLANK( Comments__c ),
+OR(
+RecordType.DeveloperName = &quot;Mturk General&quot;, RecordType.DeveloperName = &quot;Mturk General&quot;
+),
+OR(
+   ISPICKVAL( Approval_Status__c ,&quot;Rejected&quot;),  
+    Block_Worker__c 
+  )
+)</errorConditionFormula>
+        <errorDisplayField>Comments__c</errorDisplayField>
+        <errorMessage>Comments are required if Report is Rejected or Worker is Blocked and record is going to Amazon Mechanical Turk. Please check values and change as needed</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

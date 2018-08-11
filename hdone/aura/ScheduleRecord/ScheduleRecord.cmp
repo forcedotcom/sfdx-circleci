@@ -1,0 +1,3 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome" access="global">
+   <skuid:page page="ScheduleRecord" id="{!v.recordId}"/>
+</aura:component>

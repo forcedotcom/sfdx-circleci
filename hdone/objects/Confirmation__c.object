@@ -1,0 +1,2042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>ConfirmationRecord</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Customer</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Customer</fullName>
+        <fields>Name</fields>
+        <fields>Product_Name__c</fields>
+        <fields>Scenario_Summary__c</fields>
+        <fields>Reporting_Status__c</fields>
+        <fields>Sub_Reporting_Status__c</fields>
+        <label>Customer</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Confirmations for data records. For ProviderOne used to confirm provider and facility demographic information</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AccountId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK( Account__c )), 
+CASE( SourceOrg__c , &quot;Customer&quot;, 
+(CASE( Account__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Account__c), 
+&quot;HealthDetail&quot;, Account__r.ExternalId__c, &quot;Error&quot;)) , 
+&quot;HealthDetail&quot;, 
+(CASE( Account__r.SourceOrg__c , &quot;HealthDetail&quot;,Account__r.ExternalId__c, 
+&quot;Customer&quot;, Account__r.Remote_Account_Id__c  , &quot;Error&quot;)) ,&quot;Error&quot;), 
+NULL) 
+
+
+/* Checks to see if Primary record is shared from customer org or Master org 
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AccountId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Account record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account record</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AddressId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Address__c)),
+CASE( SourceOrg__c , &quot;Customer&quot;, 
+(CASE( Address__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Address__c),
+&quot;HealthDetail&quot;, Address__r.ExternalId__c, &quot;Error&quot;)) ,
+&quot;HealthDetail&quot;,
+(CASE( Address__r.SourceOrg__c , &quot;HealthDetail&quot;,Address__r.ExternalId__c, 
+&quot;Customer&quot;, Address__r.Remote_AddressId__c , &quot;Error&quot;)) ,&quot;Error&quot;),
+NULL)
+
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AddressId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AddressTypeId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Displays customer record ID or External Id if record is shared from Master org. Does logic to determine if need to use Source or Target Ids for formula. Needed to correctly update record after SF2SF sharing.</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(Address_Type__c)),
+CASE(  SourceOrg__c  , &quot;Customer&quot;, 
+(CASE(  Address_Type__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Address_Type__c),
+&quot;HealthDetail&quot;, Address_Type__r.ExternalId__c, &quot;Error&quot;)) ,
+&quot;HealthDetail&quot;,
+(CASE( Address_Type__r.SourceOrg__c , &quot;HealthDetail&quot;,Address_Type__r.ExternalId__c, 
+&quot;Customer&quot;, Address_Type__r.Remote_AddressType_Id__c , &quot;Error&quot;)) ,&quot;Error&quot;),
+NULL)
+
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Customer record Id or External Id</inlineHelpText>
+        <label>AddressTypeId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>AddressType record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>AddressType record</inlineHelpText>
+        <label>Address Type</label>
+        <referenceTo>Address_Type__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address</label>
+        <referenceTo>Address__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AuditReport__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>AuditReport</description>
+        <externalId>false</externalId>
+        <inlineHelpText>AuditReport</inlineHelpText>
+        <label>AuditReport</label>
+        <referenceTo>AuditReport__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AuditSettingId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK( AuditSetting__c )),
+CASE(  SourceOrg__c  , &quot;Customer&quot;, 
+(CASE(   AuditSetting__r.SourceOrg__c, &quot;Customer&quot;, CASESAFEID( AuditSetting__c ),
+&quot;HealthDetail&quot;,  AuditSetting__r.ExternalId__c, &quot;Error&quot;)) ,
+&quot;HealthDetail&quot;,
+(CASE( AuditSetting__r.SourceOrg__c , &quot;HealthDetail&quot;,AuditSetting__r.ExternalId__c, 
+&quot;Customer&quot;,  AuditSetting__r.Remote_AuditSettingId__c, &quot;Error&quot;)) ,&quot;Error&quot;),
+NULL)
+
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AuditSettingId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AuditSetting__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to AuditSetting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to AuditSetting</inlineHelpText>
+        <label>AuditSetting</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Product names must match. Please check Product Name on Confirmation and AuditSetting</errorMessage>
+            <filterItems>
+                <field>$Source.Product_Name__c</field>
+                <operation>equals</operation>
+                <valueField>AuditSetting__c.Product_Name__c</valueField>
+            </filterItems>
+            <infoMessage>Must select records with matching Product Names</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>AuditSetting__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Long comments field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Long comments field</inlineHelpText>
+        <label>Comments Long</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Confirmation comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Confirmation comments</inlineHelpText>
+        <label>Comments</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Completed_By__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Generic field to hold miscellaneous information such as Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Completed By</inlineHelpText>
+        <label>Completed By</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ConfirmationDateTimeLast__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Latest Confirmation Date and Time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Latest Confirmation Date and Time</inlineHelpText>
+        <label>ConfirmationDateTimeLast</label>
+        <summarizedField>Confirmation_Data__c.ConfirmationData_DateTime__c</summarizedField>
+        <summaryForeignKey>Confirmation_Data__c.Confirmation__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>ConfirmationId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Confirmation Id Formula</description>
+        <externalId>false</externalId>
+        <formula>CASE( SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Id),
+&quot;HealthDetail&quot;, ExternalId__c ,
+&quot;Error&quot;)
+
+/* Checks to see if Primary record is shared from customer org or Master org
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Confirmation Id Formula</inlineHelpText>
+        <label>ConfirmationId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Confirmation_Data_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Count of number of Confirmation Data Records</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Confirmation Data records</inlineHelpText>
+        <label>Confirmation Data Count</label>
+        <summaryForeignKey>Confirmation_Data__c.Confirmation__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Confirmation_Related_External__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Related Confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Related Confirmation</inlineHelpText>
+        <label>Confirmation Related External</label>
+        <referenceTo>Confirmation__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Confirmation_Source__c</fullName>
+        <deprecated>false</deprecated>
+        <description>How confirmation was completed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How confirmation was completed</inlineHelpText>
+        <label>Confirmation Source</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                    <label>Website</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Confirmation_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Status of Confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of Confirmation</inlineHelpText>
+        <label>Confirmation Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Reconfirm</fullName>
+                    <default>false</default>
+                    <label>Reconfirm</label>
+                </value>
+                <value>
+                    <fullName>Scheduled</fullName>
+                    <default>false</default>
+                    <label>Scheduled</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Removed</fullName>
+                    <default>false</default>
+                    <label>Removed</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Partial Complete</fullName>
+                    <default>false</default>
+                    <label>Partial Complete</label>
+                </value>
+                <value>
+                    <fullName>Expired</fullName>
+                    <default>false</default>
+                    <label>Expired</label>
+                </value>
+                <value>
+                    <fullName>To Schedule</fullName>
+                    <default>false</default>
+                    <label>To Schedule</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Confirmation_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Method</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                    <label>Website</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ContactId_Formula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(  Contact__c  )), 
+CASE( SourceOrg__c , &quot;Customer&quot;, 
+(CASE( Contact__r.SourceOrg__c , &quot;Customer&quot;, CASESAFEID( Contact__c), 
+&quot;HealthDetail&quot;, Contact__r.ExternalId__c, &quot;Error&quot;)) , 
+&quot;HealthDetail&quot;, 
+(CASE( Contact__r.SourceOrg__c , &quot;HealthDetail&quot;,Contact__r.ExternalId__c, 
+&quot;Customer&quot;,  Contact__r.Remote_Provider_Id__c  , &quot;Error&quot;)) ,&quot;Error&quot;), 
+NULL) 
+
+
+/* Checks to see if Primary record is shared from customer org or Master org 
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ContactId Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Contact record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contact record</inlineHelpText>
+        <label>Contact</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.AccountId</field>
+                <operation>equals</operation>
+                <valueField>$Source.Account__c</valueField>
+            </filterItems>
+            <infoMessage>Displaying Contacts for Account on Confirmation</infoMessage>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact_prov__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Provider</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Confirmations (Provider)</relationshipLabel>
+        <relationshipName>Confirmations1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>ExternalId</description>
+        <externalId>true</externalId>
+        <inlineHelpText>ExternalId</inlineHelpText>
+        <label>ExternalId</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>External_File_Length__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Length of external file. Usually minutes for phone calls but could be pages or other for whatever external file is.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Length of external file.</inlineHelpText>
+        <label>External File Length</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_File__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>External File</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Flow_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Flow Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Flow_Status</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IdentifierId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>External ID from Identifier associated with Confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>External ID from Identifier associated with Confirmation</inlineHelpText>
+        <label>IdentifierId</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Identifier_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>IdentifierType record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>IdentifierType record</inlineHelpText>
+        <label>Identifier Type</label>
+        <referenceTo>Identifier_Type__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Identifier__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Identifier Record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifier Record</inlineHelpText>
+        <label>Identifier</label>
+        <referenceTo>Identifier__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Comments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Comments for Confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments for Confirmation</inlineHelpText>
+        <label>Internal Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PNRCStatusCheck__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Last date and time the PartnerNetworkRecordConnection status was updated</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last date and time the PartnerNetworkRecordConnection status was updated</inlineHelpText>
+        <label>PNRCStatusCheck</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Process_Builder_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Used to indicate if Process Builder has run to avoid recursive logic</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has Process Builder run?</inlineHelpText>
+        <label>Process Builder Update</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product Name</inlineHelpText>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Product_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RemoteAuditSetting_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>RemoteAuditSettingId</description>
+        <externalId>true</externalId>
+        <inlineHelpText>RemoteAuditSettingId</inlineHelpText>
+        <label>RemoteAuditSetting_Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_AccountId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Remote AccountId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_AddressId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Remote Address Id</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Remote Address Id</inlineHelpText>
+        <label>Remote AddressId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_AddressType_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Remote AddressType Id</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Remote AddressType Id</inlineHelpText>
+        <label>Remote AddressType_Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_Confirmation_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Remote Confirmation Id</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Remote Confirmation Id</inlineHelpText>
+        <label>Remote Confirmation_Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remote_ContactId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Remote ContactId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Status_Level_3__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Level 3 reporting status</description>
+        <externalId>false</externalId>
+        <label>Reporting Status Level 3</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Feedback Provided</fullName>
+                    <default>false</default>
+                    <label>Feedback Provided</label>
+                </value>
+                <value>
+                    <fullName>No Feedback Provided</fullName>
+                    <default>false</default>
+                    <label>No Feedback Provided</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reporting_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Confirmation Reporting Status. Probably eventually custom metadata</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Confirmation Reporting Status</inlineHelpText>
+        <label>Reporting Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Remove from directory temporarily</fullName>
+                    <default>false</default>
+                    <label>Remove from directory temporarily</label>
+                </value>
+                <value>
+                    <fullName>Remove ALL location for provider immediately</fullName>
+                    <default>false</default>
+                    <label>Remove ALL location for provider immediately</label>
+                </value>
+                <value>
+                    <fullName>Remove location immediately</fullName>
+                    <default>false</default>
+                    <label>Remove location immediately</label>
+                </value>
+                <value>
+                    <fullName>Display in directory</fullName>
+                    <default>false</default>
+                    <label>Display in directory</label>
+                </value>
+                <value>
+                    <fullName>Remove ALL location for phone immediately</fullName>
+                    <default>false</default>
+                    <label>Remove ALL location for phone immediately</label>
+                </value>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Information</fullName>
+                    <default>false</default>
+                    <label>Incomplete Information</label>
+                </value>
+                <value>
+                    <fullName>In Compliance</fullName>
+                    <default>false</default>
+                    <label>In Compliance</label>
+                </value>
+                <value>
+                    <fullName>Out of Compliance</fullName>
+                    <default>false</default>
+                    <label>Out of Compliance</label>
+                </value>
+                <value>
+                    <fullName>Misunderstanding</fullName>
+                    <default>false</default>
+                    <label>Misunderstanding</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Review_Comment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Optional comment when record sent for review</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Optional comment when record sent for review</inlineHelpText>
+        <label>Review Comment</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Review_Flag__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates record sent for review</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates record sent for review</inlineHelpText>
+        <label>Review Flag</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scenario_Summary__c</fullName>
+        <deprecated>false</deprecated>
+        <description>When applicable summary of Scenario or Question purpose</description>
+        <externalId>false</externalId>
+        <label>Scenario Summary</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_PartnerConnection_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sf2Sf PartnerConnectionId Id from PartnerNetworkConnection</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Sf2Sf PartnerConnectionId Id from PartnerNetworkConnection</inlineHelpText>
+        <label>Sf2Sf_PartnerConnection_Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Id from PartnerNetworkRecordConnection for shared record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Id from PartnerNetworkRecordConnection for shared record.</inlineHelpText>
+        <label>Sf2Sf ShareId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sharing name for Salesforce to Salesforce. Uses Custom setting to get name as PartnerNetworkConnection name cannot be changed and can be confusing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sharing name for Salesforce to Salesforce from Custom Setting</inlineHelpText>
+        <label>Sf2Sf_ShareName</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Populates shared status for Salesforce to Salesforce connection. Cannot read status from object only from PartnerNetworkConnection object</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Shared status for Salesforce to Salesforce connection. Not real time.</inlineHelpText>
+        <label>Sf2Sf_ShareStatus</label>
+        <length>25</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Share_Record__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record should be shared with other organization. Used for Salesforce to Salesforce.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Should record be shared?</inlineHelpText>
+        <label>Share Record</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SourceOrg__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies which is source org for record. If record is shared FROM customer to HealthDetail then Customer else if shared other way HealthDetail. Was using formula fields but getting relationship errors.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies which is source org for record Customer or HealthDetail</inlineHelpText>
+        <label>SourceOrg</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>HealthDetail</fullName>
+                    <default>false</default>
+                    <label>HealthDetail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Specialty__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Specialty</label>
+        <referenceTo>Specialty__c</referenceTo>
+        <relationshipLabel>Confirmations</relationshipLabel>
+        <relationshipName>Confirmations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Storage_addressid__c</fullName>
+        <deprecated>false</deprecated>
+        <description>AddressId from storage object. Original customer addresses moved off platform to storage such as Big Object. Used to map back for reporting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>AddressId from storage object</inlineHelpText>
+        <label>Storage_addressid</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SubFlow_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Secondary Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Secondary Status</inlineHelpText>
+        <label>SubFlow Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Directory Check Online</fullName>
+                    <default>false</default>
+                    <label>Directory Check Online</label>
+                </value>
+                <value>
+                    <fullName>BadPhone</fullName>
+                    <default>false</default>
+                    <label>BadPhone</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_Reporting_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sub reporting status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub reporting status</inlineHelpText>
+        <label>Sub Reporting Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Reporting_Status__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not seeing new patients</fullName>
+                    <default>false</default>
+                    <label>Not seeing new patients</label>
+                </value>
+                <value>
+                    <fullName>Appointment time too long</fullName>
+                    <default>false</default>
+                    <label>Appointment time too long</label>
+                </value>
+                <value>
+                    <fullName>Confirm plan participation</fullName>
+                    <default>false</default>
+                    <label>Confirm plan participation</label>
+                </value>
+                <value>
+                    <fullName>Died</fullName>
+                    <default>false</default>
+                    <label>Died</label>
+                </value>
+                <value>
+                    <fullName>Retired</fullName>
+                    <default>false</default>
+                    <label>Retired</label>
+                </value>
+                <value>
+                    <fullName>Phone incorrect</fullName>
+                    <default>false</default>
+                    <label>Phone incorrect</label>
+                </value>
+                <value>
+                    <fullName>Specialty incorrect</fullName>
+                    <default>false</default>
+                    <label>Specialty incorrect</label>
+                </value>
+                <value>
+                    <fullName>Not practice location</fullName>
+                    <default>false</default>
+                    <label>Not practice location</label>
+                </value>
+                <value>
+                    <fullName>Refers here only</fullName>
+                    <default>false</default>
+                    <label>Refers here only</label>
+                </value>
+                <value>
+                    <fullName>Administrative only</fullName>
+                    <default>false</default>
+                    <label>Administrative only</label>
+                </value>
+                <value>
+                    <fullName>Open panel</fullName>
+                    <default>false</default>
+                    <label>Open panel</label>
+                </value>
+                <value>
+                    <fullName>Closed panel</fullName>
+                    <default>false</default>
+                    <label>Closed panel</label>
+                </value>
+                <value>
+                    <fullName>Unconfirmed panel</fullName>
+                    <default>false</default>
+                    <label>Unconfirmed panel</label>
+                </value>
+                <value>
+                    <fullName>Out of order</fullName>
+                    <default>false</default>
+                    <label>Out of order</label>
+                </value>
+                <value>
+                    <fullName>Under renovation</fullName>
+                    <default>false</default>
+                    <label>Under renovation</label>
+                </value>
+                <value>
+                    <fullName>Leave of Absence</fullName>
+                    <default>false</default>
+                    <label>Leave of Absence</label>
+                </value>
+                <value>
+                    <fullName>Address Incorrect</fullName>
+                    <default>false</default>
+                    <label>Address Incorrect</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <valueName>Confirm plan participation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <controllingFieldValue>Remove ALL location for phone immediately</controllingFieldValue>
+                <valueName>Phone incorrect</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <valueName>Specialty incorrect</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <valueName>Under renovation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <valueName>Leave of Absence</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove from directory temporarily</controllingFieldValue>
+                <valueName>Address Incorrect</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove ALL location for provider immediately</controllingFieldValue>
+                <valueName>Died</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove ALL location for provider immediately</controllingFieldValue>
+                <valueName>Retired</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove location immediately</controllingFieldValue>
+                <valueName>Not practice location</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove location immediately</controllingFieldValue>
+                <valueName>Refers here only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove location immediately</controllingFieldValue>
+                <valueName>Administrative only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Display in directory</controllingFieldValue>
+                <valueName>Open panel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Display in directory</controllingFieldValue>
+                <valueName>Closed panel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Display in directory</controllingFieldValue>
+                <valueName>Unconfirmed panel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Remove ALL location for phone immediately</controllingFieldValue>
+                <valueName>Out of order</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Website__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If applicable website URL related to confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Website URL for confirmation</inlineHelpText>
+        <label>Website</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Worker__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Worker.Name that completed initial AuditReport</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Worker that completed initial AuditReport</inlineHelpText>
+        <label>Worker</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Confirmation</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CN-{00000000}</displayFormat>
+        <label>Confirmation Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Confirmations</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Customer</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Customer</compactLayoutAssignment>
+        <description>Customer Confirmation record</description>
+        <label>Customer</label>
+        <picklistValues>
+            <picklist>Confirmation_Source__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Confirmation_Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reconfirm</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Removed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Schedule</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Confirmation_Type__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>AwaitingConfirmationData</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ConfirmationCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DuplicateRecord</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RecordScheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ScheduleRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status_Level_3__c</picklist>
+            <values>
+                <fullName>Feedback Provided</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Feedback Provided</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Display in directory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete Information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Misunderstanding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove ALL location for phone immediately</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove ALL location for provider immediately</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove from directory temporarily</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove location immediately</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Review_Flag__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SubFlow_Status__c</picklist>
+            <values>
+                <fullName>BadPhone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Directory Check Online</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Reporting_Status__c</picklist>
+            <values>
+                <fullName>Address Incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Administrative only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appointment time too long</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Confirm plan participation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Died</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leave of Absence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not practice location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not seeing new patients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refers here only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialty incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unconfirmed panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under renovation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Master_Record</fullName>
+        <active>true</active>
+        <description>Master Confirmation record. Not sent to customer</description>
+        <label>Master Record</label>
+        <picklistValues>
+            <picklist>Confirmation_Source__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Confirmation_Status__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reconfirm</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Removed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Schedule</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Confirmation_Type__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Flow_Status__c</picklist>
+            <values>
+                <fullName>AwaitingConfirmationData</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ConfirmationCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CreateReport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DeleteRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DuplicateRecord</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Use Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ManualRun</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCCheck</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PNRCUpdated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RecordScheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RelatedUpdateFinished</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ScheduleRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecordCompleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ShareRecords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpdateRelated</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status_Level_3__c</picklist>
+            <values>
+                <fullName>Feedback Provided</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Feedback Provided</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Status__c</picklist>
+            <values>
+                <fullName>Display in directory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete Information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Misunderstanding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove ALL location for phone immediately</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove ALL location for provider immediately</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove from directory temporarily</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remove location immediately</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Review_Flag__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SubFlow_Status__c</picklist>
+            <values>
+                <fullName>BadPhone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Directory Check Online</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Reporting_Status__c</picklist>
+            <values>
+                <fullName>Address Incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Administrative only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Appointment time too long</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Confirm plan participation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Died</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leave of Absence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not practice location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not seeing new patients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refers here only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialty incorrect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unconfirmed panel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under renovation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

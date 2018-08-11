@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Actions for objects. Used for System Scheduler processing</description>
+    <fields>
+        <fullName>ActionName__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>Name of Action</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Name of Action</inlineHelpText>
+        <label>ActionName</label>
+        <length>15</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record is active</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Indicates if record is active</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Object Action</label>
+    <pluralLabel>Object Actions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

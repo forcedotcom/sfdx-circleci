@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <figure>
+    <img src="https://res.cloudinary.com/healthdetail/image/upload/c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1437760875/General%20Images/1000755429.jpg"
+         alt="Reports List"
+         width="300" onclick="{!c.handleReportsTabClick}"/>
+  	<figcaption class="figcaption">
+      Go To Reports
+      </figcaption>
+    </figure>
+    </aura:component>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Develops connection between locations that will have a schedule and the schedule development to enable many to many relationships for locations that should have a schedule.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Address_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to address for scheduling information</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to address for scheduling information</inlineHelpText>
+        <label>Address Type</label>
+        <referenceTo>Address_Type__c</referenceTo>
+        <relationshipLabel>Schedule Connections</relationshipLabel>
+        <relationshipName>Schedule_Connections</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AuditSetting__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>AuditSetting</label>
+        <referenceTo>AuditSetting__c</referenceTo>
+        <relationshipLabel>Schedule Connections</relationshipLabel>
+        <relationshipName>Schedule_Connections</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>EndDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Ending date for schedule creation. If not populated will use end of month</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Ending date for schedule creation. If not populated will use end of month</inlineHelpText>
+        <label>EndDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product Name</inlineHelpText>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Product_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Provider__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to Provider (Contact)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provider</inlineHelpText>
+        <label>Provider</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Schedule Connections</relationshipLabel>
+        <relationshipName>Schedule_Connections</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Scenario__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Scenario to create</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Scenario to create</inlineHelpText>
+        <label>Scenario</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Complaint</fullName>
+                    <default>false</default>
+                    <label>Complaint</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Schedule_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Count of number of schedules to create for Connection</description>
+        <externalId>false</externalId>
+        <label>Schedule Count</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Schedule_Development__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Lookup to schedule development</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select type of schedule to create by clicking the appropriate Schedule Development name.</inlineHelpText>
+        <label>Schedule Development</label>
+        <referenceTo>Schedule_Development__c</referenceTo>
+        <relationshipLabel>Schedule Connections</relationshipLabel>
+        <relationshipName>Schedule_Connections</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SourceOrg__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies which is source org for record. If record is shared FROM customer to HealthDetail then Customer else if shared other way HealthDetail. Was using formula fields but getting relationship errors.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies which is source org for record Customer or HealthDetail</inlineHelpText>
+        <label>SourceOrg</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>HealthDetail</fullName>
+                    <default>false</default>
+                    <label>HealthDetail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>StartDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Starting Date for schedule creation. Used in Apex class</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Starting Date for schedule creation.</inlineHelpText>
+        <label>StartDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Schedule Connection</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SCHCONN-{000000}</displayFormat>
+        <label>Schedule Connection Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Schedule Connections</pluralLabel>
+    <recordTypes>
+        <fullName>MemberOne_Address</fullName>
+        <active>true</active>
+        <description>Connections used for MemberOne Addresses</description>
+        <label>MemberOne Address</label>
+        <picklistValues>
+            <picklist>Product_Name__c</picklist>
+            <values>
+                <fullName>Generic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MemberOneCustomerService</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ProviderOne</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scenario__c</picklist>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SourceOrg__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthDetail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchFilterFields>Provider__c</searchFilterFields>
+        <searchFilterFields>Address_Type__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

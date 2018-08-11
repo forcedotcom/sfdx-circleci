@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Logo for ProviderOne application</description>
+    <internalUseOnly>false</internalUseOnly>
+    <keywords>Logo</keywords>
+    <name>HealthDetail Logo</name>
+    <public>true</public>
+</Document>

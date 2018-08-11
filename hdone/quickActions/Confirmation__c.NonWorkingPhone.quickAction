@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Non Working Phone</description>
+    <fieldOverrides>
+        <field>Confirmation_Status__c</field>
+        <literalValue>Non-Working</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>ConfirmationData_DateTime__c</field>
+        <formula>NOW()</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Identifier__c</field>
+        <formula>hdone__Confirmation__c.Identifier__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Object__c</field>
+        <literalValue>Phone</literalValue>
+    </fieldOverrides>
+    <label>NonWorkingPhone</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Confirmation__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Method__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SourceOrg__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Confirmation Data Created!</successMessage>
+    <targetObject>Confirmation_Data__c</targetObject>
+    <targetParentField>Confirmation__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Junction of AuditSettingMapping and HitSettingTypes</description>
+    <fields>
+        <fullName>AuditSettingMapping__c</fullName>
+        <deprecated>false</deprecated>
+        <description>AuditSettingMapping</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>AuditSettingMapping</inlineHelpText>
+        <label>AuditSettingMapping</label>
+        <referenceTo>AuditSettingMapping__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappingHitSettingTypes</relationshipLabel>
+        <relationshipName>AuditSettingMappingHitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Category</label>
+        <referenceTo>Category__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappingHitSettingTypes</relationshipLabel>
+        <relationshipName>AuditSettingMappingHitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HitSettingType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HitSettingType</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>HitSettingType</inlineHelpText>
+        <label>HitSettingType</label>
+        <referenceTo>HitSettingType__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappingHitSettingTypes</relationshipLabel>
+        <relationshipName>AuditSettingMappingHitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record is active</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>IsActive?</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsCustomerDisplay__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Should customer display show as True?</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Should customer display show as True?</inlineHelpText>
+        <label>IsCustomerDisplay</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsRequired__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if field is required</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Is field required?</inlineHelpText>
+        <label>IsRequired</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MultiResponse__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if question is multi response</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Indicates if question is multi response</inlineHelpText>
+        <label>MultiResponse</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>QAStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>QA status for record</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>QA status for record</inlineHelpText>
+        <label>QAStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Check</fullName>
+                    <default>true</default>
+                    <label>Check</label>
+                </value>
+                <value>
+                    <fullName>Skip</fullName>
+                    <default>false</default>
+                    <label>Skip</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Question_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of question usually for MTurk</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Type of question</inlineHelpText>
+        <label>Question Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>true</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Single Choice</fullName>
+                    <default>false</default>
+                    <label>Single Choice</label>
+                </value>
+                <value>
+                    <fullName>Multi Choice</fullName>
+                    <default>false</default>
+                    <label>Multi Choice</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ResponseObject__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>ResponseObject</label>
+        <referenceTo>Object__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappingHitSettingTypes</relationshipLabel>
+        <relationshipName>AuditSettingMappingHitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sort__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sort order. Also used for question numbering. 4 = Question 4, etc</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Sort</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>AuditSettingMappingHitSettingType</label>
+    <pluralLabel>AuditSettingMappingHitSettingTypes</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

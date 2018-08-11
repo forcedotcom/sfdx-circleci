@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Object_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Object Action</label>
+        <referenceTo>Object_Action__mdt</referenceTo>
+        <relationshipLabel>ProductObjectActions</relationshipLabel>
+        <relationshipName>ProductObjectActions</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Product Object</label>
+        <referenceTo>Product_Object__mdt</referenceTo>
+        <relationshipLabel>ProductObjectActions</relationshipLabel>
+        <relationshipName>ProductObjectActions</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sort__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sort order for records</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Sort order for records</inlineHelpText>
+        <label>Sort</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>ProductObjectAction</label>
+    <pluralLabel>ProductObjectActions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

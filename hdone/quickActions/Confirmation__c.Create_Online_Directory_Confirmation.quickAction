@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates online directory confirmation record for provider at an address</description>
+    <fieldOverrides>
+        <field>Address_Type__c</field>
+        <formula>hdone__Confirmation__c.Address_Type__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>ConfirmationData_DateTime__c</field>
+        <formula>NOW()</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Customer_Display__c</field>
+        <formula>TRUE</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Object__c</field>
+        <literalValue>Directory Check Online</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SourceOrg__c</field>
+        <literalValue>Customer</literalValue>
+    </fieldOverrides>
+    <label>Create Online Directory Confirmation</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Confirmation__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Confirmation_Status__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Confirmation record created!</successMessage>
+    <targetObject>Confirmation_Data__c</targetObject>
+    <targetParentField>Confirmation__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

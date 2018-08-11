@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_45092945</developerName>
+        <masterLabel>Business Days Outstanding</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Confirmation_Data__c$Business_Days_Calc__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-180</to>
+            </sourceValues>
+            <value>&gt;180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-180</from>
+                <to>-90</to>
+            </sourceValues>
+            <value>90-180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-90</from>
+                <to>-60</to>
+            </sourceValues>
+            <value>60-90 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-60</from>
+                <to>-30</to>
+            </sourceValues>
+            <value>30-60 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-30</from>
+                <to>-10</to>
+            </sourceValues>
+            <value>10-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-10</from>
+            </sourceValues>
+            <value>10 Days or Less</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_70689269</developerName>
+        <masterLabel>Calendar Days Outstanding</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Confirmation_Data__c$Calendar_Days_Calc__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-180</to>
+            </sourceValues>
+            <value>&gt;180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-180</from>
+                <to>-90</to>
+            </sourceValues>
+            <value>90-180 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-90</from>
+                <to>-60</to>
+            </sourceValues>
+            <value>60-90 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-60</from>
+                <to>-30</to>
+            </sourceValues>
+            <value>30-60 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-30</from>
+                <to>-10</to>
+            </sourceValues>
+            <value>10-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-10</from>
+            </sourceValues>
+            <value>10 Days or Less</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Confirmation_Data__c$ConfirmationData_DateTime__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Confirmation_Data__c$Confirmation__c.Sub_Reporting_Status__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Huge</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>10</textSize>
+        <title>Out of Compliance Removed by Week</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Confirmation_Data__c$Confirmation__c</field>
+    </columns>
+    <columns>
+        <field>Confirmation_Data__c$Name</field>
+    </columns>
+    <columns>
+        <field>Confirmation_Data__c$Confirmation__c.Sf2Sf_ShareId__c</field>
+    </columns>
+    <columns>
+        <field>Confirmation_Data__c$Confirmation__c.Address_Type__c.Provider__c.Name</field>
+    </columns>
+    <columns>
+        <field>Confirmation_Data__c$Identifier_Type__c.Identifier_Display__c</field>
+    </columns>
+    <description>Out of Compliance locations removed from directory in last 30 days</description>
+    <filter>
+        <criteriaItems>
+            <column>Confirmation_Data__c$Confirmation__c.Confirmation_Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Confirmation_Data__c$Confirmation__c.Reporting_Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Remove from directory temporarily,Remove location immediately,Remove ALL location for phone immediately</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Confirmation_Data__c$Confirmation_Status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Removed</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Week</dateGranularity>
+        <field>Confirmation_Data__c$ConfirmationData_DateTime__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Confirmation_Data__c$Confirmation__c.Reporting_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Confirmation_Data__c$Confirmation__c.Sub_Reporting_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Out of Compliance Updates</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ConfirmationData_PO__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Confirmation_Data__c$ConfirmationData_DateTime__c</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Used for data sent or loaded through a file. Indicates information from file.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <fields>
+        <fullName>CustomerId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>External Id from Customer. Should be unique across objects for customer.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>External or Customer Id</inlineHelpText>
+        <label>CustomerId</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DataFileIdFormula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CASESAFEID( Id) 
+
+/* Checks to see if Primary record is shared from customer org or Master org 
+Also looks at lookup records for same thing 
+Uses Name Connection to determine if shared from other org*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DataFileIdFormula</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>External Id</description>
+        <externalId>true</externalId>
+        <label>ExternalId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FileDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of file</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of file</inlineHelpText>
+        <label>FileDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FileLocale__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Location, if any, of data on file</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Location, if any, of data on file</inlineHelpText>
+        <label>FileLocale</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>US</fullName>
+                    <default>false</default>
+                    <label>US</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FileName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>File Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>File Name</inlineHelpText>
+        <label>FileName</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FileType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of data on file</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of data on file</inlineHelpText>
+        <label>FileType</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Access and Availability</fullName>
+                    <default>false</default>
+                    <label>Access and Availability</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Flow_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Flow Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Flow_Status</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PNRCStatusCheck__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Last date and time the PartnerNetworkRecordConnection status was updated</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last date and time the PartnerNetworkRecordConnection status was updated</inlineHelpText>
+        <label>PNRCStatusCheck</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Product Name</inlineHelpText>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Product_Name</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RecordCount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Count of records on file</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Count of records on file</inlineHelpText>
+        <label>RecordCount</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RemoteDataFileId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>RemoteDataFileId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_PartnerConnection_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Sf2Sf_PartnerConnection_Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sf2Sf ShareId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareName__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sf2Sf_ShareName</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2Sf_ShareStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sf2Sf_ShareStatus</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SourceOrg__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies which is source org for record. If record is shared FROM customer to HealthDetail then Customer else if shared other way HealthDetail. Was using formula fields but getting relationship errors.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies which is source org for record Customer or HealthDetail</inlineHelpText>
+        <label>SourceOrg</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>HealthDetail</fullName>
+                    <default>false</default>
+                    <label>HealthDetail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>DataFile</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>DF-{000000}</displayFormat>
+        <label>DataFile Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>DataFiles</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Setup for type of appointment</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Address_Type__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Location for Appointment Types. Enables different lengths of appointments based on location, individual, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Location</inlineHelpText>
+        <label>Location</label>
+        <referenceTo>Address_Type__c</referenceTo>
+        <relationshipLabel>Appointment Types</relationshipLabel>
+        <relationshipName>Appointment_Types</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if Appointment Type is active</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates if Appointment Type is active</inlineHelpText>
+        <label>IsActive</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Minutes__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Average number of minutes for type of appointment. Used for appointment scheduling</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Average number of minutes for appointment type</inlineHelpText>
+        <label>Number of Minutes</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Enrollment</fullName>
+                    <default>false</default>
+                    <label>Enrollment</label>
+                </value>
+                <value>
+                    <fullName>Recertification</fullName>
+                    <default>false</default>
+                    <label>Recertification</label>
+                </value>
+                <value>
+                    <fullName>Information Only</fullName>
+                    <default>false</default>
+                    <label>Information Only</label>
+                </value>
+                <value>
+                    <fullName>Manual</fullName>
+                    <default>false</default>
+                    <label>Manual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Appointment Type</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ATN-{000000}</displayFormat>
+        <label>Appointment Type Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Appointment Types</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>In_Person</fullName>
+        <active>true</active>
+        <description>Appointment type setup for In Person</description>
+        <label>In Person</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recertification</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Phone</fullName>
+        <active>true</active>
+        <description>Appointment type setup for Phone</description>
+        <label>Phone</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recertification</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Website</fullName>
+        <active>true</active>
+        <description>Appointment type setup for Website</description>
+        <label>Website</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Enrollment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recertification</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>IsActive__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Address_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Number_of_Minutes__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>Type__c</lookupFilterFields>
+        <lookupFilterFields>RECORDTYPE</lookupFilterFields>
+        <lookupPhoneDialogsAdditionalFields>Type__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Type__c</searchFilterFields>
+        <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>AppointmentTypeManual</fullName>
+        <active>true</active>
+        <description>Checks if Type field is Manual</description>
+        <errorConditionFormula>AND(ISPICKVAL( Type__c , &apos;Manual&apos;),  (Number_of_Minutes__c &lt;&gt; 0), OR( Number_of_Minutes__c &gt; 0 , NOT(ISBLANK(Number_of_Minutes__c ))))
+
+/*Checks to see if Type field is Manual and if a value in Number of Minutes */</errorConditionFormula>
+        <errorDisplayField>Number_of_Minutes__c</errorDisplayField>
+        <errorMessage>Predefined values cannot be entered for Manual appointments. Appointment Start and End times are manually entered for these. Please remove the value in this field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>AppointmentTypeNotManual</fullName>
+        <active>true</active>
+        <description>Checks Appointment Type to ensure values entered into Number of Minutes when not Manual.</description>
+        <errorConditionFormula>AND(NOT(ISPICKVAL( Type__c , &apos;Manual&apos;)),  OR(Number_of_Minutes__c &lt; 5,Number_of_Minutes__c &gt;240, ISBLANK(Number_of_Minutes__c )))
+
+/*Checks to see if Type field is not Manual and if no value in Number of Minutes */</errorConditionFormula>
+        <errorDisplayField>Number_of_Minutes__c</errorDisplayField>
+        <errorMessage>Unless the type of appointment is Manual then appointments must be at least 5 minutes and less than 240 minutes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LocationChanged</fullName>
+        <active>true</active>
+        <description>Checks if location is changed on Appointment Type. Do not want this. Should create a new one instead.</description>
+        <errorConditionFormula>ISCHANGED( Address_Type__c )</errorConditionFormula>
+        <errorDisplayField>Address_Type__c</errorDisplayField>
+        <errorMessage>Locations cannot be changed on these records. Please create a new record instead if you want to assign values to a different location.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

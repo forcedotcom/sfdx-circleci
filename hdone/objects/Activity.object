@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Call_Recording__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Call Recording URL</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Call Recording URL</inlineHelpText>
+        <label>Call Recording</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Formula to store part of external id, such as call id, for matching. Cannot use substrings in SOQL matching as of Spring &apos;14</description>
+        <externalId>false</externalId>
+        <formula>Mid( Subject ,7,6)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Part of external id needed for SOQL matching</inlineHelpText>
+        <label>ExternalId</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_Called__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Phone number called</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number called</inlineHelpText>
+        <label>Number Called</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+</CustomObject>

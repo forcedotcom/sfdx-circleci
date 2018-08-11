@@ -1,0 +1,2 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" action="/apex/skuid__ui?page=ONEHome">
+</apex:page>

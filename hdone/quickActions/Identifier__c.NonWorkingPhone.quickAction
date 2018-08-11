@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Non Working Phone</description>
+    <fieldOverrides>
+        <field>Identifier__c</field>
+        <formula>hdone__Identifier__c.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Product_Name__c</field>
+        <literalValue>ProviderOne</literalValue>
+    </fieldOverrides>
+    <label>NonWorkingPhone</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SourceOrg__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Confirmation Created!</successMessage>
+    <targetObject>Confirmation__c</targetObject>
+    <targetParentField>Identifier__c</targetParentField>
+    <targetRecordType>Confirmation__c.Master_Record</targetRecordType>
+    <type>Create</type>
+</QuickAction>

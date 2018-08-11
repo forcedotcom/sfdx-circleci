@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>How an object is updated, if needed.</description>
+    <fields>
+        <fullName>EntryPoint__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Entry point used to determine when record is used for lookup. Usually same as a Flow entry poin</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Entry point</inlineHelpText>
+        <label>EntryPoint</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Object_Action__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Object Action</label>
+        <referenceTo>Object_Action__mdt</referenceTo>
+        <relationshipLabel>ProductObjectIdLookups</relationshipLabel>
+        <relationshipName>ProductObjectIdLookups</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Object to get owner from</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Object to get owner from</inlineHelpText>
+        <label>Object</label>
+        <referenceTo>Object__mdt</referenceTo>
+        <relationshipName>ProductObjectOwners</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product Object</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Product Object</inlineHelpText>
+        <label>Product Object</label>
+        <referenceTo>Product_Object__mdt</referenceTo>
+        <relationshipName>ProductObjectOwners</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RelatedId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Id used for lookup. Avoids hardcoding some references into application</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Id used for lookup</inlineHelpText>
+        <label>RelatedId</label>
+        <length>25</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>ProductObjectIdLookup</label>
+    <pluralLabel>ProductObjectIdLookups</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

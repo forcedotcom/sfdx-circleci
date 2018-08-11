@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Instructions for AuditSettings</description>
+    <fields>
+        <fullName>InstructionText__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Instructions</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Instructions</inlineHelpText>
+        <label>InstructionText</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>InstructionsGeneral__c</fullName>
+        <deprecated>false</deprecated>
+        <description>General instructions for scenario</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>General instructions for scenario</inlineHelpText>
+        <label>InstructionsGeneral</label>
+        <length>1500</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>InstructionsScenario__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Specific instructions for scenario</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Specific instructions for scenario</inlineHelpText>
+        <label>InstructionsScenario</label>
+        <length>3000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is record active?</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Is record active?</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>AuditSettingInstruction</label>
+    <pluralLabel>AuditSettingInstructions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Standard and Custom Objects</description>
+    <fields>
+        <fullName>Object_Sfdc__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Salesforce object. Had created MDT before EntityDefinition available. Use instead of text field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Salesforce object</inlineHelpText>
+        <label>Object_Sfdc</label>
+        <referenceTo>EntityDefinition</referenceTo>
+        <relationshipLabel>Objects</relationshipLabel>
+        <relationshipName>Objects</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Object_Text__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Text value of object names that are not available in EntityDefinition lookup</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Text value of object names that are not available in EntityDefinition lookup</inlineHelpText>
+        <label>Object_Text</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Object</label>
+    <pluralLabel>Objects</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Appointment scheduling</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Appointment_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Type of appointment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of appointment</inlineHelpText>
+        <label>Type</label>
+        <referenceTo>Appointment_Type__c</referenceTo>
+        <relationshipLabel>Appointments</relationshipLabel>
+        <relationshipName>Appointments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Person who made appointment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Person who made appointment</inlineHelpText>
+        <label>Consumer</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>Contact.RecordType.Name</field>
+                <operation>equals</operation>
+                <value>Healthcare Applicant</value>
+            </filterItems>
+            <filterItems>
+                <field>$User.CompanyName</field>
+                <operation>equals</operation>
+                <valueField>Contact.Account.Name</valueField>
+            </filterItems>
+            <infoMessage>Default search will search only for consumers in your organization. Override to make appointments for other organizations.</infoMessage>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Appointments</relationshipLabel>
+        <relationshipName>Appointments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Appointment Ending Time</description>
+        <externalId>false</externalId>
+        <label>End Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Retroactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enables creation of retroactive appointments for record keeping and reporting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Retroactive appointment? Enables appointment dates and times in past.</inlineHelpText>
+        <label>Retroactive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Schedule__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Schedule</label>
+        <referenceTo>Schedule__c</referenceTo>
+        <relationshipLabel>Appointments</relationshipLabel>
+        <relationshipName>Appointments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>StartHour__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>StartHour</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Appointment starting time</description>
+        <externalId>false</externalId>
+        <label>Start Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Booked</fullName>
+                    <default>false</default>
+                    <label>Booked</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Hours__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Total hours for appointment. Used in rollup to Schedule__c object</description>
+        <externalId>false</externalId>
+        <formula>ROUND(MOD(( End_Time__c -  Start_Time__c )*24,24),2)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total hours for this appointment</inlineHelpText>
+        <label>Total Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Appointment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Appt-{00000000}</displayFormat>
+        <label>Appointment Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Appointments</pluralLabel>
+    <recordTypes>
+        <fullName>In_Person</fullName>
+        <active>true</active>
+        <description>In Person Appointments</description>
+        <label>In Person</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Booked</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Phone</fullName>
+        <active>true</active>
+        <description>Phone Appointments</description>
+        <label>Phone</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Booked</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Website</fullName>
+        <active>true</active>
+        <description>Website appointments</description>
+        <label>Website</label>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Booked</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Contact__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Appointment_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Start_Time__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>End_Time__c</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Contact__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>RECORDTYPE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Appointment_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Start_Time__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>End_Time__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Contact__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>RECORDTYPE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Appointment_Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Start_Time__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>End_Time__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Contact__c</searchFilterFields>
+        <searchFilterFields>RECORDTYPE</searchFilterFields>
+        <searchFilterFields>Appointment_Type__c</searchFilterFields>
+        <searchFilterFields>Status__c</searchFilterFields>
+        <searchFilterFields>Start_Time__c</searchFilterFields>
+        <searchFilterFields>End_Time__c</searchFilterFields>
+        <searchResultsAdditionalFields>Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Appointment_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Start_Time__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>End_Time__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>AppointmentTimeLessThanFiveMinutes</fullName>
+        <active>true</active>
+        <description>Checks that Appointment is at least 5 minutes</description>
+        <errorConditionFormula>(End_Time__c -  Start_Time__c) &lt; 5/1440</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>Appointments must be at least 5 minutes. Please check the values in the fields</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EndTimeBlank</fullName>
+        <active>true</active>
+        <description>Checks if type of appointment is Manual and End Time has no value</description>
+        <errorConditionFormula>AND(ISPICKVAL(Appointment_Type__r.Type__c , &apos;Manual&apos;),  ISBLANK( End_Time__c ) )</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>Because the type of Appointment is Manual a value must be entered in this field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EndTimeGreaterThanScheduleEnd</fullName>
+        <active>true</active>
+        <errorConditionFormula>End_Time__c &gt;  Schedule__r.EndDateTime__c</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>Appointment time outside of window</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EndTimeInPast</fullName>
+        <active>true</active>
+        <description>Checks to ensure End Time not entered in past unless retroactive appointment.</description>
+        <errorConditionFormula>AND( Retroactive__c = False,   End_Time__c &lt; NOW())</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>The End Time cannot be in the past unless this is a retroactive appointment. Please change the information as needed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>StartTimeInPast</fullName>
+        <active>true</active>
+        <description>Checks to ensure Start Time not entered in past unless retroactive appointment.</description>
+        <errorConditionFormula>AND( Retroactive__c = False,  Start_Time__c &lt; NOW())</errorConditionFormula>
+        <errorDisplayField>Start_Time__c</errorDisplayField>
+        <errorMessage>The Start Time cannot be in the past unless this is a retroactive appointment. Please change the information as needed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>StartTimeLessThanScheduleStart</fullName>
+        <active>true</active>
+        <errorConditionFormula>Start_Time__c &lt; Schedule__r.StartDateTime__c</errorConditionFormula>
+        <errorDisplayField>Start_Time__c</errorDisplayField>
+        <errorMessage>Appointment time outside of window</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>StatusBlank</fullName>
+        <active>true</active>
+        <description>Ensures that a value for Status is picked</description>
+        <errorConditionFormula>ISBLANK(TEXT( Status__c ))</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>Please select an Appointment status</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

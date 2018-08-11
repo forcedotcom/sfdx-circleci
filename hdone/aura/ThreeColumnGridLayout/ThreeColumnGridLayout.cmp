@@ -1,0 +1,56 @@
+<aura:component access="global" implements="lightning:appHomeTemplate" description="Three up grid">
+    <aura:attribute name="gridOne" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridTwo" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridThree" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridFour" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridFive" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridSix" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridSeven" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridEight" access="global" type="Aura.Component[]" />
+    <aura:attribute name="gridNine" access="global" type="Aura.Component[]" />
+
+    <div>
+        <lightning:layout horizontalAlign="spread">
+			<lightning:layoutItem class="slds-grid slds-wrap">
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-m-bottom_small slds-p-right_small">
+                    {!v.gridOne}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-m-bottom_small slds-p-right_small">
+                    {!v.gridTwo}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }" 
+                                      class="slds-m-bottom_small">
+                    {!v.gridThree}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-m-bottom_small slds-p-right_small">
+                    {!v.gridFour}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-m-bottom_small slds-p-right_small">
+                    {!v.gridFive}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-m-bottom_small">
+                    {!v.gridSix}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-p-right_small">
+                    {!v.gridSeven}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"
+                                      class="slds-p-right_small">
+                    {!v.gridEight}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }">
+                    {!v.gridNine}
+                </lightning:layoutItem>
+			</lightning:layoutItem>           
+        </lightning:layout>
+            
+      
+    </div>
+    
+</aura:component>

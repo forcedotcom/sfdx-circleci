@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Response mappings</description>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Approval status. Used mainly for Audit Reports done to indicate if may need to go through QA or not. Combines with approval status on worker in some cases. 1st check at responses.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Approval status for record based on response</inlineHelpText>
+        <label>Approval Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>true</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Awaiting QA</fullName>
+                    <default>false</default>
+                    <label>Awaiting QA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>AuditReportBonus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>AuditReportBonus level if any</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>AuditReportBonus level if any</inlineHelpText>
+        <label>AuditReportBonus</label>
+        <referenceTo>AuditReportBonus__mdt</referenceTo>
+        <relationshipLabel>ResponseMappings</relationshipLabel>
+        <relationshipName>ResponseMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Category response belongs to. Primarily used for reporting.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Category response belongs to</inlineHelpText>
+        <label>Category</label>
+        <referenceTo>Category__mdt</referenceTo>
+        <relationshipLabel>ResponseMappings</relationshipLabel>
+        <relationshipName>ResponseMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ComparisonValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Assigned value for scoring and comparison of responses</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Comparison value for response</inlineHelpText>
+        <label>ComparisonValue</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ConfirmationDataStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to update ConfirmationData__c.Status field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>ConfirmationData__c.Status field</inlineHelpText>
+        <label>ConfirmationDataStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Acceptable Response</fullName>
+                    <default>true</default>
+                    <label>Acceptable Response</label>
+                </value>
+                <value>
+                    <fullName>Complete Response</fullName>
+                    <default>false</default>
+                    <label>Complete Response</label>
+                </value>
+                <value>
+                    <fullName>Confirmed Correct</fullName>
+                    <default>false</default>
+                    <label>Confirmed Correct</label>
+                </value>
+                <value>
+                    <fullName>Confirmed Incorrect</fullName>
+                    <default>false</default>
+                    <label>Confirmed Incorrect</label>
+                </value>
+                <value>
+                    <fullName>Data Update Required</fullName>
+                    <default>false</default>
+                    <label>Data Update Required</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                    <fullName>Fax Machine</fullName>
+                    <default>false</default>
+                    <label>Fax Machine</label>
+                </value>
+                <value>
+                    <fullName>Incomplete</fullName>
+                    <default>false</default>
+                    <label>Incomplete</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Response</fullName>
+                    <default>false</default>
+                    <label>Incomplete Response</label>
+                </value>
+                <value>
+                    <fullName>Informational</fullName>
+                    <default>false</default>
+                    <label>Informational</label>
+                </value>
+                <value>
+                    <fullName>Likely Correct</fullName>
+                    <default>false</default>
+                    <label>Likely Correct</label>
+                </value>
+                <value>
+                    <fullName>Likely Incorrect</fullName>
+                    <default>false</default>
+                    <label>Likely Incorrect</label>
+                </value>
+                <value>
+                    <fullName>Misunderstanding</fullName>
+                    <default>false</default>
+                    <label>Misunderstanding</label>
+                </value>
+                <value>
+                    <fullName>New Patients Accepted</fullName>
+                    <default>false</default>
+                    <label>New Patients Accepted</label>
+                </value>
+                <value>
+                    <fullName>No Feedback Provided</fullName>
+                    <default>false</default>
+                    <label>No Feedback Provided</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>No New Patients</fullName>
+                    <default>false</default>
+                    <label>No New Patients</label>
+                </value>
+                <value>
+                    <fullName>Non-Working</fullName>
+                    <default>false</default>
+                    <label>Non-Working</label>
+                </value>
+                <value>
+                    <fullName>Out of Compliance</fullName>
+                    <default>false</default>
+                    <label>Out of Compliance</label>
+                </value>
+                <value>
+                    <fullName>Phone Address Mismatch</fullName>
+                    <default>false</default>
+                    <label>Phone Address Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Practicing</fullName>
+                    <default>false</default>
+                    <label>Practicing</label>
+                </value>
+                <value>
+                    <fullName>Record Found</fullName>
+                    <default>false</default>
+                    <label>Record Found</label>
+                </value>
+                <value>
+                    <fullName>Record Not Found</fullName>
+                    <default>false</default>
+                    <label>Record Not Found</label>
+                </value>
+                <value>
+                    <fullName>Scheduling Issue</fullName>
+                    <default>false</default>
+                    <label>Scheduling Issue</label>
+                </value>
+                <value>
+                    <fullName>Technical Problem</fullName>
+                    <default>false</default>
+                    <label>Technical Problem</label>
+                </value>
+                <value>
+                    <fullName>Working</fullName>
+                    <default>false</default>
+                    <label>Working</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ConfirmationStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to update Confirmation__c.Status field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Confirmation__c.Status field</inlineHelpText>
+        <label>ConfirmationStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>true</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Data Update Required</fullName>
+                    <default>false</default>
+                    <label>Data Update Required</label>
+                </value>
+                <value>
+                    <fullName>Emergency Update</fullName>
+                    <default>false</default>
+                    <label>Emergency Update</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Response</fullName>
+                    <default>false</default>
+                    <label>Incomplete Response</label>
+                </value>
+                <value>
+                    <fullName>Problem</fullName>
+                    <default>false</default>
+                    <label>Problem</label>
+                </value>
+                <value>
+                    <fullName>Reconfirm</fullName>
+                    <default>false</default>
+                    <label>Reconfirm</label>
+                </value>
+                <value>
+                    <fullName>Removed</fullName>
+                    <default>false</default>
+                    <label>Removed</label>
+                </value>
+                <value>
+                    <fullName>To Schedule</fullName>
+                    <default>false</default>
+                    <label>To Schedule</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Field_ApiName__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Field ApiName</label>
+        <length>25</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record is active</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Is record active?</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Process_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Processing status of value</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Processing status of value</inlineHelpText>
+        <label>Process_Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>End</fullName>
+                    <default>true</default>
+                    <label>End</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product and Object record is associated with. As of Summer &apos;17 cannot reliably use EntityDefinition lookup item</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Product and Object record is associated with</inlineHelpText>
+        <label>Product Object</label>
+        <referenceTo>Product_Object__mdt</referenceTo>
+        <relationshipLabel>ResponseMappings</relationshipLabel>
+        <relationshipName>ResponseMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ReportingStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used for Confirmation__c.ReportingStatus</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Confirmation__c.ReportingStatus</inlineHelpText>
+        <label>ReportingStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Display in directory</fullName>
+                    <default>true</default>
+                    <label>Display in directory</label>
+                </value>
+                <value>
+                    <fullName>In Compliance</fullName>
+                    <default>false</default>
+                    <label>In Compliance</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Information</fullName>
+                    <default>false</default>
+                    <label>Incomplete Information</label>
+                </value>
+                <value>
+                    <fullName>Out of Compliance</fullName>
+                    <default>false</default>
+                    <label>Out of Compliance</label>
+                </value>
+                <value>
+                    <fullName>Remove All location for phone immediately</fullName>
+                    <default>false</default>
+                    <label>Remove All location for phone immediately</label>
+                </value>
+                <value>
+                    <fullName>Remove from directory temporarily</fullName>
+                    <default>false</default>
+                    <label>Remove from directory temporarily</label>
+                </value>
+                <value>
+                    <fullName>Remove location immediately</fullName>
+                    <default>false</default>
+                    <label>Remove location immediately</label>
+                </value>
+                <value>
+                    <fullName>Remove All location for provider immediately</fullName>
+                    <default>false</default>
+                    <label>Remove All location for provider immediately</label>
+                </value>
+                <value>
+                    <fullName>Excessive Call Length - Call Ended</fullName>
+                    <default>false</default>
+                    <label>Excessive Call Length - Call Ended</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Mailing</fullName>
+                    <default>false</default>
+                    <label>Awaiting Mailing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ResponseObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates what object response is stored in or linked to</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>What object response links to</inlineHelpText>
+        <label>ResponseObject</label>
+        <referenceTo>Object__mdt</referenceTo>
+        <relationshipLabel>ResponseMappings</relationshipLabel>
+        <relationshipName>ResponseMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_Option__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Response Option</label>
+        <length>45</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_ReportingStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used for Confirmation__c.SubReportinStatus</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Confirmation__c.SubReportinStatus</inlineHelpText>
+        <label>Sub_ReportingStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Address Incorrect</fullName>
+                    <default>true</default>
+                    <label>Address Incorrect</label>
+                </value>
+                <value>
+                    <fullName>Administrative Only</fullName>
+                    <default>false</default>
+                    <label>Administrative Only</label>
+                </value>
+                <value>
+                    <fullName>Closed Panel</fullName>
+                    <default>false</default>
+                    <label>Closed Panel</label>
+                </value>
+                <value>
+                    <fullName>Confirm Plan Participation</fullName>
+                    <default>false</default>
+                    <label>Confirm Plan Participation</label>
+                </value>
+                <value>
+                    <fullName>Died</fullName>
+                    <default>false</default>
+                    <label>Died</label>
+                </value>
+                <value>
+                    <fullName>Disconnected</fullName>
+                    <default>false</default>
+                    <label>Disconnected</label>
+                </value>
+                <value>
+                    <fullName>Exceeded Call Wait Time</fullName>
+                    <default>false</default>
+                    <label>Exceeded Call Wait Time</label>
+                </value>
+                <value>
+                    <fullName>Fax</fullName>
+                    <default>false</default>
+                    <label>Fax</label>
+                </value>
+                <value>
+                    <fullName>Feedback Provided</fullName>
+                    <default>false</default>
+                    <label>Feedback Provided</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Response</fullName>
+                    <default>false</default>
+                    <label>Incomplete Response</label>
+                </value>
+                <value>
+                    <fullName>Location Closed</fullName>
+                    <default>false</default>
+                    <label>Location Closed</label>
+                </value>
+                <value>
+                    <fullName>No Feedback Provided</fullName>
+                    <default>false</default>
+                    <label>No Feedback Provided</label>
+                </value>
+                <value>
+                    <fullName>Not Practice Location</fullName>
+                    <default>false</default>
+                    <label>Not Practice Location</label>
+                </value>
+                <value>
+                    <fullName>Open Panel</fullName>
+                    <default>false</default>
+                    <label>Open Panel</label>
+                </value>
+                <value>
+                    <fullName>Out of Order</fullName>
+                    <default>false</default>
+                    <label>Out of Order</label>
+                </value>
+                <value>
+                    <fullName>Phone Incorrect</fullName>
+                    <default>false</default>
+                    <label>Phone Incorrect</label>
+                </value>
+                <value>
+                    <fullName>Refers Here Only</fullName>
+                    <default>false</default>
+                    <label>Refers Here Only</label>
+                </value>
+                <value>
+                    <fullName>Retired</fullName>
+                    <default>false</default>
+                    <label>Retired</label>
+                </value>
+                <value>
+                    <fullName>Specialty Incorrect</fullName>
+                    <default>false</default>
+                    <label>Specialty Incorrect</label>
+                </value>
+                <value>
+                    <fullName>Technical Problem</fullName>
+                    <default>false</default>
+                    <label>Technical Problem</label>
+                </value>
+                <value>
+                    <fullName>Unconfirmed Panel</fullName>
+                    <default>false</default>
+                    <label>Unconfirmed Panel</label>
+                </value>
+                <value>
+                    <fullName>Under Renovation</fullName>
+                    <default>false</default>
+                    <label>Under Renovation</label>
+                </value>
+                <value>
+                    <fullName>Immediate Training Needed</fullName>
+                    <default>false</default>
+                    <label>Immediate Training Needed</label>
+                </value>
+                <value>
+                    <fullName>Initial Responses Incorrect</fullName>
+                    <default>false</default>
+                    <label>Initial Responses Incorrect</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>ResponseMapping</label>
+    <pluralLabel>ResponseMappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

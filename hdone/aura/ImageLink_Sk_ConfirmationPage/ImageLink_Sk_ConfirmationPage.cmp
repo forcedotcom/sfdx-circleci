@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <figure>
+    <img src="https://res.cloudinary.com/healthdetail/image/upload/c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1434130439/General%20Images/iStock_000000282354Medium.jpg"
+         alt="Confirmation Listing"
+         width="300" onclick="{!c.handleConfirmationPageClick}"/>
+  	<figcaption class="figcaption">
+      Go To Confirmations
+      </figcaption>
+    </figure>
+    </aura:component>

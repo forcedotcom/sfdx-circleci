@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Flow_Entry__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used to set entry for Process Builder and Flows</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to set entry for Process Builder and Flows</inlineHelpText>
+        <label>Flow Entry</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>FieldAnalystUpdateQueue</fullName>
+                    <default>false</default>
+                    <label>FieldAnalystUpdateQueue</label>
+                </value>
+                <value>
+                    <fullName>ManualToQueue</fullName>
+                    <default>false</default>
+                    <label>ManualToQueue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>InitialProductAssigned__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Used for Login Flow to check if initial product, Permission Set, has been assigned.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for Login Flow to check if initial product, Permission Set, has been assigned.</inlineHelpText>
+        <label>InitialProductAssigned</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Level__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Field Analysts. Level of base payment received</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Level of base payment received</inlineHelpText>
+        <label>Payment Level</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Process_Builder_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Workaround now to indicate Process Builder ran. Avoids recursive updates.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Workaround now to indicate Process Builder ran. Avoids recursive updates.</inlineHelpText>
+        <label>Process Builder Update</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>RoleName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>DeveloperName for UserRole. Used for Skuid Page Assignments</description>
+        <externalId>false</externalId>
+        <formula>UserRole.DeveloperName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>DeveloperName for UserRole.</inlineHelpText>
+        <label>RoleName</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

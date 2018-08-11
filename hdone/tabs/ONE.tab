@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used as Home Page</description>
+    <label>ONE</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom55: Books</motif>
+    <page>ONEHome</page>
+</CustomTab>

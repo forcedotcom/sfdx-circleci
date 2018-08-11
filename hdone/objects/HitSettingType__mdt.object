@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Hit Setting Type assignment</description>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Generic number field</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Generic number field</inlineHelpText>
+        <label>Amount</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approval_Percentage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HIT Approval Percentage</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>HIT Approval Percentage</inlineHelpText>
+        <label>Approval Percentage</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>AuditSettingInstruction__c</fullName>
+        <deprecated>false</deprecated>
+        <description>As of Summer 17 could not delete MDT objects. Had created AuditSettingInstruction prev. Using for Mturk Title</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>MTurk Title</inlineHelpText>
+        <label>Title</label>
+        <referenceTo>AuditSettingInstruction__mdt</referenceTo>
+        <relationshipLabel>HitSettingTypes</relationshipLabel>
+        <relationshipName>HitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comparator1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Values for Custom Qualification</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Values for Custom Qualification</inlineHelpText>
+        <label>Comparator1</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EqualTo</fullName>
+                    <default>true</default>
+                    <label>EqualTo</label>
+                </value>
+                <value>
+                    <fullName>NotEqualTo</fullName>
+                    <default>false</default>
+                    <label>NotEqualTo</label>
+                </value>
+                <value>
+                    <fullName>GreaterThanOrEqualTo</fullName>
+                    <default>false</default>
+                    <label>GreaterThanOrEqualTo</label>
+                </value>
+                <value>
+                    <fullName>LessThanOrEqualTo</fullName>
+                    <default>false</default>
+                    <label>LessThanOrEqualTo</label>
+                </value>
+                <value>
+                    <fullName>LessThan</fullName>
+                    <default>false</default>
+                    <label>LessThan</label>
+                </value>
+                <value>
+                    <fullName>GreaterThan</fullName>
+                    <default>false</default>
+                    <label>GreaterThan</label>
+                </value>
+                <value>
+                    <fullName>Exists</fullName>
+                    <default>false</default>
+                    <label>Exists</label>
+                </value>
+                <value>
+                    <fullName>DoesNotExist</fullName>
+                    <default>false</default>
+                    <label>DoesNotExist</label>
+                </value>
+                <value>
+                    <fullName>In</fullName>
+                    <default>false</default>
+                    <label>In</label>
+                </value>
+                <value>
+                    <fullName>NotIn</fullName>
+                    <default>false</default>
+                    <label>NotIn</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Custom_Qualification1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Custom qualification Id</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Custom qualification Id</inlineHelpText>
+        <label>Custom Qualification1</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Custom_Qualification_Score1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Custom qualification score</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Custom qualification score</inlineHelpText>
+        <label>Custom Qualification Score1</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>HIT Description</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>HIT Description</inlineHelpText>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Length in minutes</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Length in minutes</inlineHelpText>
+        <label>Duration</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Instructions__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Instructions for HIT Setting</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Instructions for HIT Setting</inlineHelpText>
+        <label>Instructions</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Keywords__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Keywords for HIT. Free form text so must add commas to separate words</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Keywords for HIT.</inlineHelpText>
+        <label>Keywords</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lifetime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Lifetime in hours</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Lifetime in hours</inlineHelpText>
+        <label>Lifetime</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Long_Text_Area_Questions__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Creates multi select picklist for long text area questions. Must use 1;2;3 type format</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Creates multi select picklist for long text area questions. Must use 1;2;3 type format</inlineHelpText>
+        <label>Long Text Area Questions</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Bonus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Max bonus if applicable for Hit Setting</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Max bonus if applicable for Hit Setting</inlineHelpText>
+        <label>Max Bonus</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_Assignments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Maximum Assignments</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Maximum Assignments</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_Hits_Approved__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Minimum HITS approved</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Minimum HITS approved</inlineHelpText>
+        <label>Min Hits Approved</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ObjectDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Generic Date Field</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Generic Date Field</inlineHelpText>
+        <label>ObjectDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Payment Type for HIT Setting</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Payment Type for HIT Setting</inlineHelpText>
+        <label>Payment Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Auto Bonus</fullName>
+                    <default>true</default>
+                    <label>Auto Bonus</label>
+                </value>
+                <value>
+                    <fullName>Flat Fee</fullName>
+                    <default>false</default>
+                    <label>Flat Fee</label>
+                </value>
+                <value>
+                    <fullName>Manual Bonus</fullName>
+                    <default>false</default>
+                    <label>Manual Bonus</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ProductObjectIdLookup__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>ProductObjectIdLookup</label>
+        <referenceTo>ProductObjectIdLookup__mdt</referenceTo>
+        <relationshipLabel>HitSettingTypes</relationshipLabel>
+        <relationshipName>HitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product and object associated with record</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Product and object associated with record</inlineHelpText>
+        <label>Product Object</label>
+        <referenceTo>Product_Object__mdt</referenceTo>
+        <relationshipLabel>HitSettingTypes</relationshipLabel>
+        <relationshipName>HitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2SfSetting__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Sf2SfSetting</label>
+        <referenceTo>Sf2SfSetting__mdt</referenceTo>
+        <relationshipLabel>HitSettingTypes</relationshipLabel>
+        <relationshipName>HitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Type</label>
+        <referenceTo>Category__mdt</referenceTo>
+        <relationshipLabel>HitSettingTypes</relationshipLabel>
+        <relationshipName>HitSettingTypes</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <label>HitSettingType</label>
+    <pluralLabel>HitSettingTypes</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,3 @@
+<aura:component implements="lightning:actionOverride,force:appHostable" access="global">
+   <skuid:page page="ConfirmationPage"/>
+</aura:component>

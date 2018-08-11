@@ -1,0 +1,13 @@
+<design:component label="Three Column Grid Layout">
+   <flexipage:template>
+       <flexipage:region name="gridOne" defaultWidth="SMALL" />
+       <flexipage:region name="gridTwo" defaultWidth="SMALL" />
+       <flexipage:region name="gridThree" defaultWidth="SMALL" />
+       <flexipage:region name="gridFour" defaultWidth="SMALL" />
+       <flexipage:region name="gridFive" defaultWidth="SMALL" />
+       <flexipage:region name="gridSix" defaultWidth="SMALL" />
+       <flexipage:region name="gridSeven" defaultWidth="SMALL" />
+       <flexipage:region name="gridEight" defaultWidth="SMALL" />
+       <flexipage:region name="gridNine" defaultWidth="SMALL" />
+   </flexipage:template>
+</design:component>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Mappings for AuditSettings. Usually used for ConfirmationData and AuditReports</description>
+    <fields>
+        <fullName>Category__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Question category</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Question category</inlineHelpText>
+        <label>Category</label>
+        <referenceTo>Category__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappings</relationshipLabel>
+        <relationshipName>AuditSettingMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FieldApiName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>API name of field for mapping</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>API name of field for mapping</inlineHelpText>
+        <label>xFieldApiName</label>
+        <length>25</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HitSettingTypeLookup__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Hit Setting Type</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Hit Setting Type</inlineHelpText>
+        <label>xHitSettingType</label>
+        <referenceTo>HitSettingType__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappings</relationshipLabel>
+        <relationshipName>AuditSettingMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if record is active.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Indicates if record is active.</inlineHelpText>
+        <label>xIsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsCustomerDisplay__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Should customer display show as True?</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Should customer display show as True?</inlineHelpText>
+        <label>xIsCustomerDisplay</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsRequired__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if field is required</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Is field required</inlineHelpText>
+        <label>xIsRequired</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MultiResponse__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if question is multi response</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Indicates if question is multi response</inlineHelpText>
+        <label>xMultiResponse</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ProcessStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Processing status for question. Often used to indicate End or last question</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Processing status for question</inlineHelpText>
+        <label>ProcessStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>End</fullName>
+                    <default>true</default>
+                    <label>End</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Object__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Object for Product</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Object for Product</inlineHelpText>
+        <label>Product Object</label>
+        <referenceTo>Product_Object__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappings</relationshipLabel>
+        <relationshipName>AuditSettingMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QAStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <description>QA status for record</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>QA status for record</inlineHelpText>
+        <label>xQAStatus</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Check</fullName>
+                    <default>true</default>
+                    <label>Check</label>
+                </value>
+                <value>
+                    <fullName>Skip</fullName>
+                    <default>false</default>
+                    <label>Skip</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Question_Mapping__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Question Mapping</label>
+        <referenceTo>Question_Mapping__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappings</relationshipLabel>
+        <relationshipName>AuditSettingMappings</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Question_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of question usually for MTurk</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Type of question</inlineHelpText>
+        <label>Question Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>true</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Single Choice</fullName>
+                    <default>false</default>
+                    <label>Single Choice</label>
+                </value>
+                <value>
+                    <fullName>Multi Choice</fullName>
+                    <default>false</default>
+                    <label>Multi Choice</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ResponseCount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Count of number of optimal valid responses for question</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>ResponseCount</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ResponseField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field name response is linked to. Used for remap</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Field name response is linked to</inlineHelpText>
+        <label>ResponseField</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ResponseObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>EntityDefinition Object response is linked to. As of Summer 17 EntityDefinition not working correctly in Flows. Returning ID only. Object__r.DeveloperName not working.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>EntityDefinition Object response is linked to</inlineHelpText>
+        <label>ResponseObject</label>
+        <referenceTo>Object__mdt</referenceTo>
+        <relationshipLabel>AuditSettingMappings (ResponseObject)</relationshipLabel>
+        <relationshipName>AuditSettingMappings1</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates how responses are populated. Text means all values are contained in Repsonse Mapping as text values. Lookup requires lookup in the system</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>xResponse Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>true</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Lookup</fullName>
+                    <default>false</default>
+                    <label>Lookup</label>
+                </value>
+                <value>
+                    <fullName>Remap</fullName>
+                    <default>false</default>
+                    <label>Remap</label>
+                </value>
+                <value>
+                    <fullName>Skip</fullName>
+                    <default>false</default>
+                    <label>Skip</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sort__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Enables sorting of records found</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Enables sorting of records found</inlineHelpText>
+        <label>xSort</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>AuditSettingMapping</label>
+    <pluralLabel>AuditSettingMappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

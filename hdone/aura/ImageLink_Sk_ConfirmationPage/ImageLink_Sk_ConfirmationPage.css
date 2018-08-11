@@ -1,0 +1,15 @@
+.THIS { 
+  text-align: center;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.THIS .figcaption {
+  display: block;
+     padding: 5px;
+  font-size: 1.5em;
+  font-weight: 300;
+  word-wrap:normal;
+  text-align: center;
+}

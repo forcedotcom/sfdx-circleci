@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>40.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>Primary Home Page for ONE application</description>
+    <label>ONEHome</label>
+    <packageVersions>
+        <majorNumber>10</majorNumber>
+        <minorNumber>0</minorNumber>
+        <namespace>skuid</namespace>
+    </packageVersions>
+</ApexPage>

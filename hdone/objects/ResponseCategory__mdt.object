@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Junction for Responses and Categories. Enables same response to be placed into multiple categories</description>
+    <fields>
+        <fullName>Category__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Category MDT</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Category MDT</inlineHelpText>
+        <label>Category</label>
+        <referenceTo>Category__mdt</referenceTo>
+        <relationshipLabel>ResponseCategories</relationshipLabel>
+        <relationshipName>ResponseCategories</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is record active?</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Is record active?</inlineHelpText>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Product MDT</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Product MDT</inlineHelpText>
+        <label>Product</label>
+        <referenceTo>Product__mdt</referenceTo>
+        <relationshipLabel>ResponseCategories</relationshipLabel>
+        <relationshipName>ResponseCategories</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ResponseMapping__c</fullName>
+        <deprecated>false</deprecated>
+        <description>ResponseMapping MDT</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>ResponseMapping MDT</inlineHelpText>
+        <label>ResponseMapping</label>
+        <referenceTo>ResponseMapping__mdt</referenceTo>
+        <relationshipLabel>ResponseCategories</relationshipLabel>
+        <relationshipName>ResponseCategories</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sf2SfSetting__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Sf2SfSetting MDT. Essentially the customer for which this applies. Enables same response to be used on different categories based on customer</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Sf2SfSetting MDT</inlineHelpText>
+        <label>Sf2SfSetting</label>
+        <referenceTo>Sf2SfSetting__mdt</referenceTo>
+        <relationshipLabel>ResponseCategories</relationshipLabel>
+        <relationshipName>ResponseCategories</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <label>ResponseCategory</label>
+    <pluralLabel>ResponseCategories</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
