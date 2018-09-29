@@ -17,7 +17,7 @@ jobs:
           command: "sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -a circle_build_$CIRCLE_BUILD_NUM --setdefaultdevhubusername"
           name: "Authorize DeveloperHub Org"
       - run: 
-          command: "./dx-utils/setup_scratch_org.sh do_not_open_browser"
+          command: "./dx-utils/setup_scratch_org.sh circle_build_$CIRCLE_BUILD_NUM do_not_open_browser"
           name: "Setup Scratch Org"
       - run:
           command: |
