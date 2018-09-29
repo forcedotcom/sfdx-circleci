@@ -12,14 +12,11 @@ Note: CircleCI is already configured with an ENV Variable: `DEV_HUB_AUTH_URL` wh
 - connect to DevHub org (and make it your default hub with an alias):
 `sfdx force:auth:web:login --setdefaultdevhubusername --setalias healthDetailHub`
 
-- create scratch org (and make it your default): 
-`sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias <alias>`
+- create branch and scratch org (and make it your default): 
+`./dx-utils/create_branch.sh branch_name`
 
-- push the metadata to scratch org:
-`sfdx force:source:push;`
-
-- open the app:
-`sfdx force:org:open`
+- delete branch (local and remote) and delete scratch org
+`./dx-utils/delete_branch.sh branch_name`
 
 - run the tests:
 `sfdx force:apex:test:run --resultformat tap --codecoverage -d test_results`

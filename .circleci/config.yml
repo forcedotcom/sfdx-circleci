@@ -17,11 +17,8 @@ jobs:
           command: "sfdx force:auth:sfdxurl:store -f /tmp/sfdx.url -a circle_build_$CIRCLE_BUILD_NUM --setdefaultdevhubusername"
           name: "Authorize DeveloperHub Org"
       - run: 
-          command: "sfdx force:org:create -f config/project-scratch-def.json --setdefaultusername -a circle_build_$CIRCLE_BUILD_NUM\n"
-          name: "Create Scratch Org"
-      - run: 
-          command: "sfdx force:source:push"
-          name: "Push source code"
+          command: "./dx-utils/setup_scratch_org.sh do_not_open_browser"
+          name: "Setup Scratch Org"
       - run:
           command: |
             sfdx force:apex:test:run --wait 6 --resultformat tap --codecoverage -d test_results

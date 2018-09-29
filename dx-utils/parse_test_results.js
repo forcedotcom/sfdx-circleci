@@ -38,9 +38,9 @@ if (results.summary.outcome === 'Failed') {
 
 } else {
     //everything is ok
-    if (coverage.length) {
+    if(coverage.length){
         console.log(`All tests pass\nCode Coverage: ${coverage[0].coveredPercent}%\n`);
-    } else {
+    }else{
         console.log(`there is no code coverage from this run`);
     }
 }
