@@ -1,0 +1,1 @@
+system.debug(UserInfo.getUserName());

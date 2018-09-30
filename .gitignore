@@ -12,3 +12,5 @@ test/artifacts
 assets/server.key
 assets/env-var-values.txt
 assets/server.key.hex
+test_results
+.vscode
