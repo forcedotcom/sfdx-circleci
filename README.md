@@ -25,7 +25,7 @@ If any any of these assumptions aren't true, the following steps won't work.
 4) Encrypt and store the server.key generated above using the instructions below.
 > "Circle does a nice job of allowing you to set environment variables inside the UI in a protected way." (attribution to [Kevin O'Hara](https://github.com/kevinohara80))
 
-- First, we will generate a key and initializtion vector (iv) to encrypt your server.key file locally.  The key and iv will be used by Circleci to decrypt your server key in the build environment.
+- First, we will generate a key and initialization vector (iv) to encrypt your server.key file locally.  The key and iv will be used by Circleci to decrypt your server key in the build environment.
 
 ```bash
 $ openssl enc -aes-256-cbc -k <passphrase here> -P -md sha1 -nosalt
