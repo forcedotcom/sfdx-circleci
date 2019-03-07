@@ -46,7 +46,7 @@ jobs:
           command: |
             echo 'Running tests'            
             sfdx force:auth:jwt:grant --clientid $DEVHUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDX_USER -d -r https://login.salesforce.com -a DevHub
-            sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --setdefaultusername $HUB_USER -r https://test.salesforce.com -a PHDev18
+            sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_USER -r https://test.salesforce.com -a PHDev18
             sfdx force --help
             sfdx force:org:list
             sfdx force:org:create -s -f ~/ci_app/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 10
