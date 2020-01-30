@@ -12,9 +12,10 @@ jobs:
     machine: true
     working_directory: ~/ci_app
     environment:
+      SFDX_NPM_REGISTRY: http://ec2-18-234-205-250.compute-1.amazonaws.com:4873
       # from https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli_standalone.htm
       # and https://developer.salesforce.com/media/salesforce-cli/manifest.json
-      - DX_CLI_URL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+      DX_CLI_URL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
     steps:
       - checkout
       - run:
@@ -28,6 +29,12 @@ jobs:
             ./sfdx/install
             sfdx
             mkdir tmp
+      - run:
+          name: Install Plugin
+          command: |
+            echo 'y' > input
+            sfdx plugins:install salesforce-alm < input
+            sfdx plugins --core
       - run:
           name: Create hub key
           command: |
@@ -47,7 +54,7 @@ jobs:
             echo 'Running tests'
             sfdx force:auth:jwt:grant --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDC_USER --setdefaultdevhubusername -a hub
             sfdx force --help
-            sfdx force:org:create -s -f ~/ci_app/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 2
+            sfdx force:org:create -s -f ~/ci_app/config/project-scratch-def.json -a circle_build_$CIRCLE_BUILD_NUM --wait 4
             sfdx force:source:push -u circle_build_$CIRCLE_BUILD_NUM
       - run:
           name: Run Apex Tests
