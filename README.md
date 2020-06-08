@@ -8,7 +8,7 @@ This repository shows one way you can successfully setup Salesforce DX with Circ
 - You know how to get your Github repository setup with Circle CI. (Here's their [Getting Started guide](https://circleci.com/docs/2.0/).)
 - You have properly setup JWT-Based Authorization Flow (i.e. headless). I recommend using [these steps for generating your Self-Signed SSL Certificate](https://devcenter.heroku.com/articles/ssl-certificate-self). 
 
-If any any of these assumptions aren't true, the following steps won't work.
+If any of these assumptions aren't true, the following steps won't work.
 
 ## Getting Started
 
